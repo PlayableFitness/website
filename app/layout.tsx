@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Playable Movement",
-  description: "The Playable Fitness Platform",
+  title: "Playable Fitness",
+  description: "Gaming meets Movement",
 };
 
 export default function RootLayout({
