@@ -150,7 +150,7 @@ export default function HomePage() {
             src="/header/header_16:9_03.png"
             alt="Playable Movement Hero"
             className="h-full w-full object-cover opacity-55 brightness-90"
-            style={{ objectPosition: "center 35%" }}
+            style={{ objectPosition: "10% 35%" }}
           />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.06),transparent_38%)]" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/30 to-black/88" />
