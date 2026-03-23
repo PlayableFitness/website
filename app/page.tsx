@@ -12,17 +12,17 @@ function Navbar() {
         </Link>
 
         <div className="flex items-center gap-3">
+            <Link
+            href="/players"
+            className="rounded-full bg-white px-5 py-2.5 text-sm font-medium text-black transition hover:bg-gray-100"
+          >
+            Für Spieler
+          </Link>
           <Link
             href="/partners"
             className="rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-sm text-white/90 transition hover:bg-white/10"
           >
             Für Partner
-          </Link>
-          <Link
-            href="/players"
-            className="rounded-full bg-white px-5 py-2.5 text-sm font-medium text-black transition hover:bg-gray-100"
-          >
-            Für Spieler
           </Link>
         </div>
       </div>
