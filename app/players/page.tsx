@@ -159,7 +159,7 @@ export default function PlayersPage() {
               Für Spieler
             </p>
 
-            <h1 className="text-5xl font-semibold leading-[0.98] tracking-tight md:text-7xl xl:text-[6.5rem]">
+            <h1 className="text-4xl font-semibold leading-[0.98] tracking-tight md:text-7xl xl:text-[6.5rem]">
               Werde dein
               <br />
               eigener Spieler.
