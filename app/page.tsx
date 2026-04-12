@@ -162,7 +162,7 @@ export default function HomePage() {
               Eine neue Kategorie zwischen Bewegung, Gaming und Community
             </p>
 
-            <h1 className="text-5xl font-semibold leading-[0.98] tracking-tight md:text-7xl xl:text-[7rem]">
+            <h1 className="text-5xl font-semibold leading-[0.88] tracking-tight md:text-7xl xl:text-[7rem]">
               Move. Play. Progress.
             </h1>
 
