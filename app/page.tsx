@@ -163,9 +163,7 @@ export default function HomePage() {
             </p>
 
             <h1 className="text-5xl font-semibold leading-[0.98] tracking-tight md:text-7xl xl:text-[7rem]">
-              Play to Move.
-              <br />
-              <span className="text-white/78">Move to Progress.</span>
+              Move. Play. Progress.
             </h1>
 
             <p className="mt-8 max-w-4xl text-xl leading-relaxed text-white/82 md:text-2xl">
