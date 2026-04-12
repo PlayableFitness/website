@@ -157,12 +157,12 @@ export default function HomePage() {
         </div>
 
         <div className="relative mx-auto flex min-h-[78vh] max-w-7xl items-center px-6 py-20">
-          <div className="max-w-5xl">
+          <div className="max-w-6xl">
             <p className="mb-6 text-sm uppercase tracking-[0.34em] text-white/55">
               Eine neue Kategorie zwischen Bewegung, Gaming und Community
             </p>
 
-            <h1 className="text-5xl font-semibold leading-[0.88] tracking-tight md:text-7xl xl:text-[7rem]">
+            <h1 className="text-5xl font-semibold leading-[0.98] tracking-tight md:text-7xl xl:text-[7rem]">
               Move. Play. Progress.
             </h1>
 
