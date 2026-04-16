@@ -400,20 +400,25 @@ export default function PlayersPage() {
             Sei früh dabei und erlebe, wie reale Bewegung zu Skills, Teamwirkung,
             Spieltagen, Ligaaufstieg und sichtbarem Status wird.
           </p>
-
-          <form className="mx-auto mt-10 flex max-w-xl flex-col gap-3 sm:flex-row">
-            <input
-              type="email"
-              placeholder="Deine E-Mail"
-              className="flex-1 rounded-full border border-white/15 bg-white/[0.04] px-6 py-4 text-white outline-none placeholder:text-white/30"
-            />
-            <button
-              type="submit"
-              className="rounded-full bg-white px-7 py-4 font-medium text-black transition hover:bg-gray-100"
-            >
-              Early Access sichern
-            </button>
-          </form>
+    
+           <div className="mt-12 text-center space-y-5">
+            <p className="text-sm uppercase tracking-[0.28em] text-white/45">
+              Coming Soon
+            </p>
+          
+            <p className="mx-auto max-w-md text-white/70 text-lg">
+              Early Access wird bald verfügbar sein.
+            </p>
+          
+            <div className="text-sm text-white/40 space-x-6">
+              <a href="/" className="hover:text-white transition">
+                Zur Startseite
+              </a>
+              <a href="/partners" className="hover:text-white transition">
+                Partnerseite ansehen
+              </a>
+            </div>
+          </div>
 
           <div className="mt-6 flex flex-col justify-center gap-4 sm:flex-row">
             <Link href="/" className="text-sm text-white/55 transition hover:text-white">
