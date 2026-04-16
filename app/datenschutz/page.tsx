@@ -1,7 +1,18 @@
+import Link from "next/link";
+
 export default function DatenschutzPage() {
   return (
     <main className="min-h-screen bg-black text-white px-6 py-20">
       <div className="mx-auto max-w-3xl">
+
+        {/* 👇 NEU: Rück-Link */}
+        <Link
+          href="/"
+          className="mb-8 inline-block text-sm text-white/60 transition hover:text-white"
+        >
+          ← Zurück zur Startseite
+        </Link>
+
         <h1 className="text-3xl font-semibold mb-10">Datenschutzerklärung</h1>
 
         <div className="space-y-6 text-sm leading-relaxed text-white/80">
@@ -94,6 +105,10 @@ export default function DatenschutzPage() {
             Angebots anzupassen.
           </p>
 
+        </div>
+
+        <div className="mt-16 text-xs text-white/40">
+          © 2026 Playable Fitness. All rights reserved.
         </div>
       </div>
     </main>
