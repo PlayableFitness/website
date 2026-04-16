@@ -419,18 +419,6 @@ export default function PlayersPage() {
               </a>
             </div>
           </div>
-
-          <div className="mt-6 flex flex-col justify-center gap-4 sm:flex-row">
-            <Link href="/" className="text-sm text-white/55 transition hover:text-white">
-              Zur Startseite
-            </Link>
-            <Link
-              href="/partners"
-              className="text-sm text-white/55 transition hover:text-white"
-            >
-              Partnerseite ansehen
-            </Link>
-          </div>
         </div>
       </section>
     </main>
