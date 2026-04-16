@@ -1,27 +1,42 @@
+import Link from "next/link";
+
 export default function ImpressumPage() {
   return (
     <main className="min-h-screen bg-black text-white px-6 py-20">
       <div className="mx-auto max-w-3xl">
-        <h1 className="text-3xl font-semibold mb-10">Impressum</h1>
+        <Link
+          href="/"
+          className="mb-8 inline-block text-sm text-white/60 transition hover:text-white"
+        >
+          ← Zurück zur Startseite
+        </Link>
 
-        <div className="space-y-6 text-white/80 text-sm leading-relaxed">
+        <h1 className="mb-10 text-3xl font-semibold">Impressum</h1>
+
+        <div className="space-y-6 text-sm leading-relaxed text-white/80">
           <p>Angaben gemäß § 5 DDG</p>
 
           <p>
-            Matthias Bruckhoff<br />
-            Zeppelinstr. 57<br />
-            45470 Mülheim<br />
+            Matthias Bruckhoff
+            <br />
+            Zeppelinstr. 57
+            <br />
+            45470 Mülheim
+            <br />
             Deutschland
           </p>
 
           <p>
-            Kontakt<br />
+            Kontakt
+            <br />
             E-Mail: hello@playable-fitness.com
           </p>
 
           <p>
-            Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV<br />
-            Matthias Bruckhoff<br />
+            Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV
+            <br />
+            Matthias Bruckhoff
+            <br />
             Adresse wie oben
           </p>
         </div>
