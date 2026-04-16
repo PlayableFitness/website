@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Footer from "./components/footer"; // 👈 NEU
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,6 +16,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Playable Fitness",
   description: "Gaming meets Movement",
+  icons: {
+    icon: "/icon.svg",
+  },
 };
 
 export default function RootLayout({
@@ -28,6 +32,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white`}
       >
         {children}
+
+        {/* 👇 HIER kommt der Footer rein */}
+        <Footer />
+
       </body>
     </html>
   );
