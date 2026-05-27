@@ -16,7 +16,7 @@ function Navbar() {
             href="/players"
             className="rounded-full bg-white px-5 py-2.5 text-sm font-medium text-black transition hover:bg-gray-100"
           >
-            Für Spielerrr
+            Für Spielerr
           </Link>
           <Link
             href="/partners"
