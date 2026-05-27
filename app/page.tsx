@@ -2,487 +2,532 @@ import Link from "next/link";
 
 function Navbar() {
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-black/55 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-black/10 bg-[#f7f7f2]/85 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <Link href="/" className="text-xl font-semibold tracking-tight text-white">
-          Playable Fitness
-          <span className="ml-2 hidden text-sm font-normal text-white/40 md:inline">
-            The Playable Movement Platform
-          </span>
+        <Link href="/" className="flex items-center gap-3">
+          <img
+            src="/logo/IY logo.png"
+            alt="IY Logo"
+            className="h-10 w-10 rounded-xl object-cover"
+          />
+          <div className="leading-none">
+            <div className="text-xs font-semibold uppercase tracking-[0.32em] text-black/55">
+              Improve Yourself
+            </div>
+          </div>
         </Link>
 
-        <div className="flex items-center gap-3">
-            <Link
-            href="/players"
-            className="rounded-full bg-white px-5 py-2.5 text-sm font-medium text-black transition hover:bg-gray-100"
-          >
-            Für Spieler
-          </Link>
+        <nav className="hidden items-center gap-8 text-xs font-bold uppercase tracking-[0.12em] text-black/70 md:flex">
           <Link
-            href="/partners"
-            className="rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-sm text-white/90 transition hover:bg-white/10"
+            href="/"
+            className="text-black underline decoration-[#00D1B2] decoration-2 underline-offset-8"
           >
-            Für Partner
+            Home
           </Link>
-        </div>
+          <Link href="/players" className="transition hover:text-black">
+            Players
+          </Link>
+          <Link href="/partners" className="transition hover:text-black">
+            Partners
+          </Link>
+        </nav>
+
+        <Link
+          href="/players"
+          className="rounded-xl bg-[#00D1B2] px-5 py-3 text-xs font-black uppercase tracking-[0.12em] text-black transition hover:scale-[1.02]"
+        >
+          Start Progressing
+        </Link>
       </div>
     </header>
   );
 }
 
+function PlayerCardStack() {
+  const cards = [
+    {
+      src: "/cards/card_julia.png",
+      className: "z-30 rotate-0 scale-100",
+    },
+    {
+      src: "/cards/card_jaydon.png",
+      className:
+        "z-20 -translate-x-16 translate-y-8 -rotate-6 scale-95 opacity-95",
+    },
+    {
+      src: "/cards/card_david.png",
+      className:
+        "z-10 translate-x-16 translate-y-10 rotate-6 scale-95 opacity-95",
+    },
+  ];
+
+  return (
+    <div className="relative mx-auto h-[560px] w-[420px]">
+      {cards.map((card) => (
+        <img
+          key={card.src}
+          src={card.src}
+          alt="IY Player Card"
+          className={`absolute left-1/2 top-0 h-[540px] w-auto -translate-x-1/2 rounded-[2rem] shadow-2xl shadow-black/25 transition duration-500 hover:z-40 hover:-translate-y-4 hover:scale-105 ${card.className}`}
+        />
+      ))}
+    </div>
+  );
+}
+
+function SystemStrip() {
+  const stats = [
+    [
+      "REAL MOVEMENT",
+      "Visible Progress",
+      "Runs, workouts, recovery and consistency become visible development.",
+    ],
+    [
+      "GAME DYNAMICS",
+      "Instant Feedback",
+      "Your player evolves immediately through visible skills, ratings and progress.",
+    ],
+    [
+      "PLAYER EVOLUTION",
+      "Build Yourself",
+      "Short-term motivation drives long-term physical and personal development.",
+    ],
+    [
+      "SEASON ZERO",
+      "Now Forming",
+      "Become part of the first generation shaping a new world of movement and progression.",
+    ],
+  ];
+
+  return (
+    <div className="relative z-10 mx-auto -mt-10 max-w-7xl px-6">
+      <div className="grid overflow-hidden rounded-2xl border border-black/10 bg-white/90 shadow-xl shadow-black/5 backdrop-blur-xl md:grid-cols-4">
+        {stats.map(([label, value, sub]) => (
+          <div
+            key={label}
+            className="border-black/10 p-6 md:border-r last:md:border-r-0"
+          >
+            <p className="text-[11px] font-black uppercase tracking-[0.16em] text-black/55">
+              {label}
+            </p>
+            <p className="mt-2 text-3xl font-black uppercase tracking-tight text-black">
+              {value}
+            </p>
+            <p className="mt-2 text-sm leading-relaxed text-black/55">{sub}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function Section({
-  id,
   eyebrow,
   title,
   text,
   children,
-  center = false,
 }: {
-  id?: string;
   eyebrow: string;
   title: string;
   text?: string;
   children?: React.ReactNode;
-  center?: boolean;
 }) {
   return (
-    <section id={id} className="border-t border-white/10">
-      <div className="mx-auto max-w-7xl px-6 py-20 md:py-28">
-        <div className={center ? "mx-auto max-w-4xl text-center" : "max-w-3xl"}>
-          <p className="mb-4 text-xs uppercase tracking-[0.28em] text-white/45">
+    <section className="border-t border-black/10 bg-[#f7f7f2]">
+      <div className="mx-auto max-w-7xl px-6 py-16 md:py-24">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-xs font-black uppercase tracking-[0.28em] text-black/45">
             {eyebrow}
           </p>
-          <h2 className="text-3xl font-semibold leading-tight text-white md:text-5xl">
+          <h2 className="mt-4 text-4xl font-black uppercase leading-[0.95] tracking-tight text-black md:text-6xl">
             {title}
           </h2>
           {text && (
-            <p className="mt-6 text-lg leading-relaxed text-white/70 md:text-xl">
+            <p className="mt-6 text-lg leading-relaxed text-black/65">
               {text}
             </p>
           )}
         </div>
-        {children && <div className="mt-14">{children}</div>}
+        {children && <div className="mt-12">{children}</div>}
       </div>
     </section>
   );
 }
 
-function InfoCard({
+function FeatureCard({
+  index,
   title,
   text,
-}: {
-  title: string;
-  text: string;
-}) {
-  return (
-    <div className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-8">
-      <h3 className="text-2xl font-semibold text-white">{title}</h3>
-      <p className="mt-4 leading-relaxed text-white/70">{text}</p>
-    </div>
-  );
-}
-
-function FlowCard({
-  step,
-  title,
-  text,
-}: {
-  step: string;
-  title: string;
-  text: string;
-}) {
-  return (
-    <div className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-8">
-      <p className="text-sm uppercase tracking-[0.22em] text-white/40">{step}</p>
-      <h3 className="mt-4 text-2xl font-semibold text-white">{title}</h3>
-      <p className="mt-4 leading-relaxed text-white/70">{text}</p>
-    </div>
-  );
-}
-
-function ImageCard({
   image,
-  eyebrow,
-  title,
-  text,
-  tall = false,
-  pos = "object-center",
+  imagePosition = "object-center",
 }: {
-  image: string;
-  eyebrow: string;
+  index: string;
   title: string;
   text: string;
-  tall?: boolean;
-  pos?: string;
+  image: string;
+  imagePosition?: string;
 }) {
   return (
-    <div
-      className={`group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] ${
-        tall ? "min-h-[460px]" : "min-h-[320px]"
-      }`}
-    >
-      <img
-        src={image}
-        alt={title}
-        className={`absolute inset-0 h-full w-full object-cover ${pos} opacity-75 transition duration-700 group-hover:scale-105`}
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 p-8">
-        <p className="mb-3 text-xs uppercase tracking-[0.24em] text-white/50">
-          {eyebrow}
+    <div className="group overflow-hidden rounded-3xl border border-black/10 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-black/10">
+      <div className="aspect-[4/3] overflow-hidden bg-[#ecece5]">
+        <img
+          src={image}
+          alt={title}
+          className={`h-full w-full object-cover ${imagePosition} transition duration-700 group-hover:scale-105`}
+        />
+      </div>
+      <div className="p-6">
+        <p className="text-xs font-black uppercase tracking-[0.2em] text-black/45">
+          {index}
         </p>
-        <h3 className="text-2xl font-semibold text-white md:text-3xl">{title}</h3>
-        <p className="mt-4 max-w-xl leading-relaxed text-white/75">{text}</p>
+        <h3 className="mt-3 text-2xl font-black uppercase leading-none tracking-tight text-black">
+          {title}
+        </h3>
+        <p className="mt-4 text-sm leading-relaxed text-black/65">{text}</p>
       </div>
     </div>
   );
 }
 
+function PlayerStatusSection() {
+  const stages = [
+    {
+      stage: "Level 01",
+      title: "Rookie",
+      rating: "42 OVR",
+      text: "Every player starts somewhere. Movement and consistency develop your progress step by step.",
+      image: "/players/stufe1.jpg",
+    },
+    {
+      stage: "Level 02",
+      title: "Starter",
+      rating: "58 OVR",
+      text: "Your stats rise, your progress becomes visible and your player identity starts to evolve.",
+      image: "/players/stufe2.jpg",
+    },
+    {
+      stage: "Level 03",
+      title: "Elite",
+      rating: "74 OVR",
+      text: "New unlocks, higher status and visible development reflect your long-term progress.",
+      image: "/players/stufe3.jpg",
+    },
+    {
+      stage: "Level 04",
+      title: "Pro",
+      rating: "91 OVR",
+      text: "Top players unlock special styles, new opportunities and higher visibility.",
+      image: "/players/stufe4.jpg",
+    },
+  ];
+
+  return (
+    <Section
+      eyebrow="Player Status"
+      title="Your player evolves."
+      text="Visible stats, new skills and rising status make progress feel immediate — while real movement develops you long-term."
+    >
+      <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+        {stages.map((item) => (
+          <div
+            key={item.title}
+            className="group overflow-hidden rounded-3xl border border-black/10 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-black/10"
+          >
+            <div className="relative aspect-[9/16] overflow-hidden bg-[#ecece5]">
+              <img
+                src={item.image}
+                alt={item.title}
+                className="h-full w-full object-cover object-[center_30%] transition duration-700 group-hover:scale-105"
+              />
+              <div className="absolute left-4 top-4 rounded-xl bg-[#00D1B2] px-3 py-2 text-xs font-black uppercase text-black">
+                {item.rating}
+              </div>
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent p-5">
+                <p className="text-xs font-black uppercase tracking-[0.18em] text-white/55">
+                  {item.stage}
+                </p>
+                <h3 className="mt-2 text-3xl font-black uppercase text-white">
+                  {item.title}
+                </h3>
+              </div>
+            </div>
+            <div className="p-6">
+              <p className="text-sm leading-relaxed text-black/65">
+                {item.text}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-8 grid gap-6 md:grid-cols-2">
+        <div className="rounded-3xl border border-black/10 bg-white p-8">
+          <p className="text-xs font-black uppercase tracking-[0.2em] text-black/45">
+            Jerseys & Brands
+          </p>
+          <h3 className="mt-3 text-2xl font-black uppercase text-black">
+            Your style
+          </h3>
+          <p className="mt-4 text-black/65">
+            As you progress, you unlock new jerseys, sports brands and
+            individual styles for your player.
+          </p>
+        </div>
+
+        <div className="rounded-3xl border border-black/10 bg-white p-8">
+          <p className="text-xs font-black uppercase tracking-[0.2em] text-black/45">
+            Identity & Status
+          </p>
+          <h3 className="mt-3 text-2xl font-black uppercase text-black">
+            What you stand for
+          </h3>
+          <p className="mt-4 text-black/65">
+            Your progress becomes visible through status, styles, brands and the
+            identity your player carries into the world.
+          </p>
+        </div>
+      </div>
+    </Section>
+  );
+}
+
+function MatchdaySection() {
+  return (
+    <Section
+      eyebrow="Teams & Leagues"
+      title="Real game dynamics."
+      text="Promotion, rivalries and matchdays turn real movement into a living sports world."
+    >
+      <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+        <div className="relative overflow-hidden rounded-3xl border border-black/10 bg-white p-8 md:p-10">
+          <img
+            src="/logik/team.jpg"
+            alt="Team"
+            className="absolute inset-0 h-full w-full object-cover opacity-20"
+          />
+          <div className="relative">
+            <p className="text-xs font-black uppercase tracking-[0.22em] text-black/45">
+              Matchday 07
+            </p>
+            <h3 className="mt-4 text-4xl font-black uppercase leading-none tracking-tight text-black md:text-5xl">
+              Move United
+              <br />
+              vs Berlin Athletics
+            </h3>
+
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              <div className="rounded-2xl bg-black p-5 text-white">
+                <p className="text-xs font-black uppercase tracking-[0.18em] text-white/45">
+                  Team Power
+                </p>
+                <p className="mt-2 text-5xl font-black text-[#00D1B2]">78</p>
+              </div>
+              <div className="rounded-2xl border border-black/10 bg-white/80 p-5">
+                <p className="text-xs font-black uppercase tracking-[0.18em] text-black/45">
+                  Weekly Form
+                </p>
+                <p className="mt-2 text-5xl font-black text-black">+12%</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="rounded-3xl border border-black/10 bg-white p-8 md:p-10">
+          <p className="text-xs font-black uppercase tracking-[0.22em] text-black/45">
+            League Table
+          </p>
+          <div className="mt-6 space-y-3">
+            {[
+              ["1", "North Squad", "82"],
+              ["2", "Move United", "78"],
+              ["3", "Berlin Athletics", "74"],
+              ["4", "Urban Runners", "69"],
+            ].map(([rank, team, rating]) => (
+              <div
+                key={team}
+                className="flex items-center justify-between rounded-2xl border border-black/10 bg-[#f7f7f2] px-4 py-4"
+              >
+                <div className="flex items-center gap-4">
+                  <span className="text-sm font-black text-black/45">
+                    #{rank}
+                  </span>
+                  <span className="font-black uppercase text-black">
+                    {team}
+                  </span>
+                </div>
+                <span className="rounded-xl bg-[#00D1B2] px-3 py-2 text-xs font-black text-black">
+                  {rating}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </Section>
+  );
+}
+
+function CTASection() {
+  return (
+    <section className="bg-[#f7f7f2] px-6 pb-16 md:pb-24">
+      <div className="mx-auto grid max-w-7xl gap-6 md:grid-cols-2">
+        <div className="rounded-3xl border border-black/10 bg-white p-8 md:p-10">
+          <p className="text-xs font-black uppercase tracking-[0.22em] text-black/55">
+            Season Zero
+          </p>
+          <h2 className="mt-4 text-4xl font-black uppercase leading-none tracking-tight md:text-5xl">
+            Your progress starts now.
+          </h2>
+          <p className="mt-6 max-w-md text-black/65">
+            Join the first people connecting real movement, visible progress and
+            true game motivation.
+          </p>
+          <Link
+            href="/players"
+            className="mt-8 inline-flex rounded-xl bg-[#00D1B2] px-6 py-4 text-xs font-black uppercase tracking-[0.14em] text-black"
+          >
+            Start your progression →
+          </Link>
+        </div>
+
+        <div className="relative overflow-hidden rounded-3xl border border-black/10 bg-white p-8 md:p-10">
+          <img
+            src="/vision/vision_05.jpg"
+            alt="Season Zero"
+            className="absolute inset-0 h-full w-full object-cover object-[center_25%] opacity-35"
+          />
+          <div className="relative max-w-md">
+            <p className="text-xs font-black uppercase tracking-[0.22em] text-black/55">
+              Season Zero
+            </p>
+            <h2 className="mt-4 text-4xl font-black uppercase leading-none tracking-tight md:text-5xl">
+              The first generation is forming.
+            </h2>
+            <p className="mt-6 text-black/70">
+              Athletes, creators, teams, gyms and brands are shaping the first
+              real-world progression platform.
+            </p>
+            <Link
+              href="/partners"
+              className="mt-8 inline-flex rounded-xl bg-black px-6 py-4 text-xs font-black uppercase tracking-[0.14em] text-white"
+            >
+              Build with us →
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-[#f6f6f1] text-black">
+    <main className="min-h-screen bg-[#f7f7f2] text-black">
       <Navbar />
 
-      {/* HERO */}
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden bg-[#f7f7f2]">
         <div className="absolute inset-0">
           <img
             src="/header/header_16:9_03.png"
-            alt="Playable Movement Hero"
-            className="h-full w-full object-cover opacity-55 brightness-90"
-            style={{ objectPosition: "10% 35%" }}
+            alt="IY Movement"
+            className="h-full w-full object-cover opacity-95"
+            style={{ objectPosition: "center 25%" }}
           />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.06),transparent_38%)]" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/30 to-black/88" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#f7f7f2]/88 via-[#f7f7f2]/45 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#f7f7f2] to-transparent" />
         </div>
 
-        <div className="relative mx-auto flex min-h-[78vh] max-w-7xl items-center px-6 py-20">
-          <div className="max-w-6xl">
-            <p className="mb-6 text-sm uppercase tracking-[0.34em] text-white/55">
-              Eine neue Kategorie zwischen Bewegung, Gaming und Community
+        <div className="relative mx-auto grid min-h-[78vh] max-w-7xl items-center gap-10 px-6 py-20 md:grid-cols-[1.1fr_0.9fr]">
+          <div className="max-w-2xl">
+            <p className="mb-5 text-xs font-black uppercase tracking-[0.24em] text-black/65">
+              The first real-world progression platform
             </p>
 
-            <h1 className="text-5xl font-semibold leading-[0.98] tracking-tight md:text-7xl xl:text-[7rem]">
-              Move. Play. Progress.
+            <h1 className="text-6xl font-black uppercase leading-[0.88] tracking-tight text-black md:text-8xl xl:text-[7.4rem]">
+              Move.
+              <br />
+              Play.
+              <br />
+              <span className="text-[#00D1B2] drop-shadow-sm">
+                Progress.
+              </span>
             </h1>
 
-            <p className="mt-8 max-w-4xl text-xl leading-relaxed text-white/82 md:text-2xl">
-              Reale Bewegung entwickelt die Skills deines Spielers. Dein Fortschritt
-              stärkt dein Team und entscheidet mit über euren Weg durch Spieltage,
-              Tabellen und Ligen.
+            <p className="mt-8 max-w-md text-xl leading-relaxed text-black/75">
+              Instant visible progress.
+              <br />
+              Real-world development.
             </p>
 
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
               <Link
                 href="/players"
-                className="inline-flex items-center justify-center rounded-full bg-white px-7 py-4 text-base font-medium text-black transition hover:bg-gray-100"
+                className="inline-flex items-center justify-center rounded-xl bg-[#00D1B2] px-7 py-4 text-xs font-black uppercase tracking-[0.14em] text-black transition hover:scale-[1.02]"
               >
-                Spielererlebnis entdecken
+                Start your progression →
               </Link>
               <Link
                 href="/partners"
-                className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-7 py-4 text-base text-white/90 transition hover:bg-white/10"
+                className="inline-flex items-center justify-center rounded-xl px-4 py-4 text-xs font-black uppercase tracking-[0.14em] text-black transition hover:bg-white"
               >
-                Partnerschaften entdecken
+                Build with us →
               </Link>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* SO FUNKTIONIERT'S */}
-      <Section
-        id="mechanik"
-        eyebrow="So funktioniert’s"
-        title="Die Kernlogik von Playable Movement"
-        text="Aus echter Bewegung entsteht ein System aus Skill Entwicklung, Teamwirkung, Spieltagsimulation und Ligen mit Aufstieg und Abstieg."
-        center
-      >
-        <div className="grid gap-6 md:grid-cols-3">
-          {[
-            {
-              step: "01",
-              image: "/logik/bewegung.jpg",
-              title: "Bewegung",
-              text: "Schritte, Workouts und Aktivität werden zum Input für das System.",
-              pos: "object-[center_35%]",
-            },
-            {
-              step: "02",
-              image: "/logik/skills.jpg",
-              title: "Skills",
-              text: "Deine Bewegung entwickelt Werte, Attribute und Fähigkeiten.",
-              pos: "object-center",
-            },
-            {
-              step: "03",
-              image: "/logik/spieler.jpg",
-              title: "Spieler",
-              text: "Dein Spieler wächst im Rating, im Status und in seiner Wirkung.",
-              pos: "object-[center_20%]",
-            },
-          ].map((item) => (
-            <div
-              key={item.step}
-              className="group overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] transition hover:bg-white/[0.06]"
-            >
-              <div className="aspect-[16/10] overflow-hidden">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className={`h-full w-full object-cover ${item.pos} transition duration-700 group-hover:scale-105`}
-                />
-              </div>
-              <div className="p-8">
-                <p className="text-sm uppercase tracking-[0.22em] text-white/35">
-                  {item.step}
-                </p>
-                <h3 className="mt-4 text-3xl font-semibold text-white">{item.title}</h3>
-                <p className="mt-4 leading-relaxed text-white/70">{item.text}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="my-10 rounded-[2rem] border border-white/10 bg-white/[0.03] px-8 py-8 text-center">
-          <p className="text-sm uppercase tracking-[0.24em] text-white/35">
-            Wirkung im System
-          </p>
-          <p className="mt-3 text-xl font-medium text-white/90 md:text-2xl">
-            Deine Skills stärken deinen Spieler. Dein Spieler stärkt dein Team.
-            Dein Team entscheidet mit über Spieltage, Tabelle und Ligaentwicklung.
-          </p>
-        </div>
-
-        <div className="grid gap-6 md:grid-cols-3">
-          {[
-            {
-              step: "04",
-              image: "/logik/team.jpg",
-              title: "Team",
-              text: "Dein Fortschritt fließt in den gemeinsamen Teamwert ein.",
-              pos: "object-center",
-            },
-            {
-              step: "05",
-              image: "/logik/spieltag.jpg",
-              title: "Spieltag",
-              text: "Teams treten in Simulationen gegeneinander an und erzeugen Ergebnisse.",
-              pos: "object-[center_45%]",
-            },
-            {
-              step: "06",
-              image: "/logik/liga.jpg",
-              title: "Liga",
-              text: "Ergebnisse entscheiden über Tabellenplatz, Aufstieg und Abstieg.",
-              pos: "object-center",
-            },
-          ].map((item) => (
-            <div
-              key={item.step}
-              className="group overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] transition hover:bg-white/[0.06]"
-            >
-              <div className="aspect-[16/10] overflow-hidden">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className={`h-full w-full object-cover ${item.pos} transition duration-700 group-hover:scale-105`}
-                />
-              </div>
-              <div className="p-8">
-                <p className="text-sm uppercase tracking-[0.22em] text-white/35">
-                  {item.step}
-                </p>
-                <h3 className="mt-4 text-3xl font-semibold text-white">{item.title}</h3>
-                <p className="mt-4 leading-relaxed text-white/70">{item.text}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      {/* SPIELERKARRIERE */}
-      <Section
-        eyebrow="Spielerkarriere"
-        title="Vom Amateur zum Pro"
-        text="Mit steigenden Skills wächst auch dein Status im System. Aus ersten Schritten werden Ausrüster, Sponsoren und sichtbare Repräsentation."
-      >
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-          {[
-            {
-              stage: "Stufe 1",
-              title: "Amateur",
-              text: "Du startest mit einfachen Grundlagen, ersten Werten und ohne Ausrüster oder Sponsor.",
-              image: "/players/stufe1.jpg",
-              pos: "object-[center_32%]",
-            },
-            {
-              stage: "Stufe 2",
-              title: "Erste Entwicklung",
-              text: "Mit steigenden Skills schaltest du erste Ausrüster frei und wirst im System sichtbarer.",
-              image: "/players/stufe2.jpg",
-              pos: "object-[center_32%]",
-            },
-            {
-              stage: "Stufe 3",
-              title: "Anerkennung",
-              text: "Du erreichst ein neues Level, bekommst erste Sponsorenoptionen und stärkere Repräsentation.",
-              image: "/players/stufe3.jpg",
-              pos: "object-[center_32%]",
-            },
-            {
-              stage: "Stufe 4",
-              title: "Pro",
-              text: "Große Ausrüster und starke Werbepartner markieren den höchsten sichtbaren Status im System.",
-              image: "/players/stufe4.jpg",
-              pos: "object-[center_32%]",
-            },
-          ].map((item) => (
-            <div
-              key={item.stage}
-              className="group overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] transition hover:bg-white/[0.06]"
-            >
-              <div className="aspect-[9/16] overflow-hidden">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className={`h-full w-full object-cover ${item.pos} transition duration-700 group-hover:scale-105`}
-                />
-              </div>
-
-              <div className="p-6">
-                <p className="text-sm uppercase tracking-[0.22em] text-white/40">
-                  {item.stage}
-                </p>
-                <h3 className="mt-4 text-xl font-semibold text-white">{item.title}</h3>
-                <p className="mt-4 text-sm leading-relaxed text-white/70">
-                  {item.text}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-10 grid gap-6 md:grid-cols-2">
-          <InfoCard
-            title="Du schaltest neue Optionen frei"
-            text="Mit deinem Fortschritt schaltest du neue Ausstatter und Werbepartner frei, die zu deinem Status im System passen."
-          />
-          <InfoCard
-            title="Du darfst auswählen"
-            text="Du entscheidest mit, welche Marken du repräsentieren willst, je nach Vorlieben, Stil und dem Level, das du erreicht hast."
-          />
-        </div>
-      </Section>
-
-      {/* WARUM DAS ANDERS IST */}
-      <Section
-        eyebrow="Warum das anders ist"
-        title="Nicht noch eine Fitness App. Sondern ein Fortschrittssystem."
-        text="Playable Movement verbindet sichtbare Entwicklung, Teamrelevanz und Wettbewerb in einer Weise, die klassische Fitnessprodukte selten leisten."
-      >
-        <div className="grid gap-6 md:grid-cols-3">
-          <InfoCard
-            title="Du siehst Fortschritt"
-            text="Deine Werte, Skills und dein Status entwickeln sich sichtbar weiter."
-          />
-          <InfoCard
-            title="Du bist Teil von etwas Größerem"
-            text="Dein Fortschritt hilft nicht nur dir, sondern auch deinem Team."
-          />
-          <InfoCard
-            title="Du spielst auf etwas hin"
-            text="Spieltage, Tabellen und Ligen schaffen echte Spannung und Richtung."
-          />
-        </div>
-      </Section>
-
-      {/* ZWEI PERSPEKTIVEN */}
-      <Section
-        eyebrow="Zwei Perspektiven"
-        title="Für Spieler motivierend. Für Partner integrierbar."
-        text="Die gleiche Logik, die Menschen stärker in Bewegung bringt, öffnet gleichzeitig neue Möglichkeiten für Ausrüster, Sponsoren, Creator und Präventionspartner."
-      >
-        <div className="grid gap-6 md:grid-cols-2">
-          <Link
-            href="/players"
-            className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] transition hover:bg-white/[0.07]"
-          >
-            <img
-              src="/vision/vision_05.jpg"
-              alt="Für Spieler"
-              className="absolute inset-0 h-full w-full object-cover object-[center_20%] opacity-35 transition duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent" />
-            <div className="relative p-8 md:p-10">
-              <p className="text-sm uppercase tracking-[0.24em] text-white/45">
-                Für Spieler
-              </p>
-              <h3 className="mt-4 text-3xl font-semibold">Werde dein eigener Spieler.</h3>
-              <p className="mt-4 max-w-xl leading-relaxed text-white/75">
-                Entdecke Skills, Teamwirkung, Spieltage, Ligen und deine Entwicklung vom Amateur zum Pro.
-              </p>
-              <p className="mt-10 text-white">Spielerseite ansehen →</p>
-            </div>
-          </Link>
-
-          <Link
-            href="/partners"
-            className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] transition hover:bg-white/[0.07]"
-          >
-            <img
-              src="/vision/vision_02.jpg"
-              alt="Für Partner"
-              className="absolute inset-0 h-full w-full object-cover opacity-35 transition duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent" />
-            <div className="relative p-8 md:p-10">
-              <p className="text-sm uppercase tracking-[0.24em] text-white/45">
-                Für Partner
-              </p>
-              <h3 className="mt-4 text-3xl font-semibold">
-                Werde Teil von Bewegungskultur.
-              </h3>
-              <p className="mt-4 max-w-xl leading-relaxed text-white/75">
-                Erfahre, wie Ausrüster, Sponsoren, Creator und Präventionspartner Teil von Status, Motivation und positiven Momenten werden können.
-              </p>
-              <p className="mt-10 text-white">Partnerseite ansehen →</p>
-            </div>
-          </Link>
-        </div>
-      </Section>
-
-      {/* VISION */}
-      <section className="border-t border-white/10">
-        <div className="mx-auto max-w-7xl px-6 py-24 text-center md:py-32">
-          <p className="text-sm uppercase tracking-[0.28em] text-white/45">Vision</p>
-          <h2 className="mx-auto mt-5 max-w-5xl text-4xl font-semibold leading-tight md:text-6xl">
-            Bewegung wird zum Spiel.
-            <br />
-            Und aus Fortschritt wird ein weltweites Movement.
-          </h2>
-          <p className="mx-auto mt-8 max-w-3xl text-lg leading-relaxed text-white/70 md:text-xl">
-            Playable Movement verbindet Skill Aufbau, Teamdynamik, Spieltage, Ligen
-            und sichtbare Entwicklung zu einer Plattform, die Millionen Menschen
-            langfristig motivieren könnte.
-          </p>
-
-          <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
-            <Link
-              href="/players"
-              className="inline-flex items-center justify-center rounded-full bg-white px-7 py-4 text-base font-medium text-black transition hover:bg-gray-100"
-            >
-              Ich will als Spieler mehr sehen
-            </Link>
-            <Link
-              href="/partners"
-              className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-7 py-4 text-base text-white/90 transition hover:bg-white/10"
-            >
-              Ich will als Partner mehr erfahren
-            </Link>
+          <div className="hidden justify-end md:flex">
+            <PlayerCardStack />
           </div>
         </div>
       </section>
+
+      <SystemStrip />
+
+      <Section
+        eyebrow="The idea"
+        title="The dynamics of games for real-world development."
+        text="Visible progress, instant rewards and skill development make games motivating. IY brings that dynamic to movement, health and personal growth."
+      >
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <FeatureCard
+            index="01"
+            title="Real movement"
+            text="Runs, workouts, recovery and daily activity develop your player in real life."
+            image="/logik/bewegung.jpg"
+          />
+          <FeatureCard
+            index="02"
+            title="Instant progress"
+            text="Skills, ratings and visible development create motivation and anticipation."
+            image="/cards/card_julia.png"
+            imagePosition="object-[center_8%]"
+          />
+          <FeatureCard
+            index="03"
+            title="Your player"
+            text="Your progress becomes visible through stats, status, development and identity."
+            image="/logik/team.jpg"
+          />
+          <FeatureCard
+            index="04"
+            title="Real game dynamics"
+            text="Matchdays, rankings, rivalries and leagues bring the dynamics of games into real life."
+            image="/logik/liga.jpg"
+          />
+        </div>
+      </Section>
+
+      <PlayerStatusSection />
+
+      <MatchdaySection />
+
+      <Section
+        eyebrow="Healthy development"
+        title="Long-term progress."
+        text="Visible motivation creates short-term excitement. Real movement builds long-term health, fitness and habits."
+      />
+
+      <CTASection />
     </main>
   );
 }
