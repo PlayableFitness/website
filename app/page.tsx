@@ -409,7 +409,7 @@ export default function HomePage() {
         <div className="relative mx-auto grid min-h-[78vh] max-w-7xl items-center gap-10 px-6 py-20 md:grid-cols-[1.1fr_0.9fr]">
           <div className="max-w-2xl">
             <p className="mb-5 text-xs font-black uppercase tracking-[0.24em] text-black/65">
-              The first real-world progression platform
+              BECOME YOUR OWN PLAYER.
             </p>
 
             <h1 className="text-6xl font-black uppercase leading-[0.88] tracking-tight text-black md:text-8xl xl:text-[7.4rem]">
