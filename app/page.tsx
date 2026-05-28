@@ -423,9 +423,7 @@ export default function HomePage() {
             </h1>
 
             <p className="mt-8 max-w-md text-xl leading-relaxed text-black/75">
-              Instant visible progress.
-              <br />
-              Real-world development.
+              Real movement develops your player through visible progress, skills, status and long-term personal development.
             </p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
