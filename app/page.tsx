@@ -483,40 +483,6 @@ export default function HomePage() {
 
       <SystemStrip />
 
-      <Section
-        eyebrow="The idea"
-        title="The dynamics of games for real-world development."
-        text="Visible progress, instant rewards and skill development make games motivating. IY brings that dynamic to movement, health and personal growth."
-      >
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          <FeatureCard
-            index="01"
-            title="Real movement"
-            text="Runs, workouts, recovery and daily activity develop your player in real life."
-            image="/logik/bewegung.jpg"
-          />
-          <FeatureCard
-            index="02"
-            title="Instant progress"
-            text="Skills, ratings and visible development create motivation and anticipation."
-            image="/cards/card_julia.png"
-            imagePosition="object-[center_8%]"
-          />
-          <FeatureCard
-            index="03"
-            title="Your player"
-            text="Your progress becomes visible through stats, status, development and identity."
-            image="/logik/team.jpg"
-          />
-          <FeatureCard
-            index="04"
-            title="Real game dynamics"
-            text="Matchdays, rankings, rivalries and leagues bring the dynamics of games into real life."
-            image="/logik/liga.jpg"
-          />
-        </div>
-      </Section>
-
       <PlayerStatusSection />
 
       <MatchdaySection />
