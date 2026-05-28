@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+import { motion } from "framer-motion";
 import Link from "next/link";
 
 const accent = "#00D1B2";
@@ -71,6 +75,61 @@ function PlayerCardStack() {
           src={card.src}
           alt="IY Player Card"
           className={`absolute left-1/2 top-0 h-[540px] w-auto -translate-x-1/2 rounded-[2rem] shadow-2xl shadow-black/25 transition duration-500 hover:z-40 hover:-translate-y-4 hover:scale-105 ${card.className}`}
+        />
+      ))}
+    </div>
+  );
+}
+
+function MobilePlayerCardStack() {
+  const cards = [
+    "/cards/card_Julia.png",
+    "/cards/card_Jaydon.png",
+    "/cards/card_David.png",
+    "/cards/card_Felix.png",
+    "/cards/card_Lena.png",
+  ];
+
+  const [index, setIndex] = useState(0);
+
+  const visibleCards = [
+    cards[index % cards.length],
+    cards[(index + 1) % cards.length],
+    cards[(index + 2) % cards.length],
+  ];
+
+  return (
+    <div className="relative mx-auto mt-12 h-[390px] w-[270px] md:hidden">
+      {visibleCards.map((src, i) => (
+        <motion.img
+          key={`${src}-${index}-${i}`}
+          src={src}
+          alt="IY Player Card"
+          drag={i === 0 ? "x" : false}
+          dragConstraints={{ left: 0, right: 0 }}
+          onDragEnd={(_, info) => {
+            if (Math.abs(info.offset.x) > 90 && i === 0) {
+              setIndex((prev) => prev + 1);
+            }
+          }}
+          initial={{
+            scale: 0.94 - i * 0.04,
+            y: i * 18,
+            rotate: i === 1 ? -5 : i === 2 ? 5 : 0,
+          }}
+          animate={{
+            scale: 1 - i * 0.05,
+            y: i * 18,
+            rotate: i === 1 ? -5 : i === 2 ? 5 : 0,
+          }}
+          whileDrag={{ rotate: 8, scale: 1.03 }}
+          className={`absolute inset-0 h-[360px] w-full rounded-[1.7rem] object-cover shadow-2xl shadow-black/25 ${
+            i === 0
+              ? "z-30 cursor-grab active:cursor-grabbing"
+              : i === 1
+              ? "z-20 opacity-90"
+              : "z-10 opacity-75"
+          }`}
         />
       ))}
     </div>
@@ -399,8 +458,7 @@ export default function HomePage() {
           <img
             src="/header/header_16:9_03.png"
             alt="IY Movement"
-            className="h-full w-full object-cover opacity-95"
-            style={{ objectPosition: "78% 25%" }}
+            className="h-full w-full object-cover object-[75%_25%] opacity-95 md:object-[center_25%]"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#f7f7f2]/88 via-[#f7f7f2]/45 to-transparent" />
           <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#f7f7f2] to-transparent" />
@@ -409,7 +467,7 @@ export default function HomePage() {
         <div className="relative mx-auto grid min-h-[78vh] max-w-7xl items-center gap-10 px-6 py-20 md:grid-cols-[1.1fr_0.9fr]">
           <div className="max-w-2xl">
             <p className="mb-5 text-xs font-black uppercase tracking-[0.24em] text-black/65">
-              BECOME YOUR OWN PLAYER.
+              Real movement. Game dynamics. Visible progress.
             </p>
 
             <h1 className="text-6xl font-black uppercase leading-[0.88] tracking-tight text-black md:text-8xl xl:text-[7.4rem]">
@@ -422,8 +480,9 @@ export default function HomePage() {
               </span>
             </h1>
 
-            <p className="mt-8 max-w-md text-xl leading-relaxed text-black/75">
-              Real movement develops your player through visible progress, skills, status and long-term personal development.
+            <p className="mt-8 max-w-lg text-xl leading-relaxed text-black/75">
+              Real movement develops your player through visible progress,
+              identity, teams and long-term development.
             </p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
@@ -440,6 +499,8 @@ export default function HomePage() {
                 Build with us →
               </Link>
             </div>
+
+            <MobilePlayerCardStack />
           </div>
 
           <div className="hidden justify-end md:flex">
