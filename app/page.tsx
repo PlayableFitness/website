@@ -6,10 +6,11 @@ function Navbar() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Link href="/" className="flex items-center gap-3">
           <img
-            src="/logo/IY Logo.png"
+            src="/logo/IY logo.png"
             alt="IY Logo"
             className="h-10 w-10 rounded-xl object-cover"
           />
+
           <div className="leading-none">
             <div className="text-xs font-semibold uppercase tracking-[0.32em] text-black/55">
               Improve Yourself
@@ -24,96 +25,90 @@ function Navbar() {
           >
             Home
           </Link>
-          <Link href="/players" className="transition hover:text-black">
-            Players
-          </Link>
-          <Link href="/partners" className="transition hover:text-black">
-            Partners
-          </Link>
+
+          <Link href="/players">Players</Link>
+
+          <Link href="/partners">Partners</Link>
         </nav>
 
         <Link
           href="/players"
           className="rounded-xl bg-[#00D1B2] px-5 py-3 text-xs font-black uppercase tracking-[0.12em] text-black transition hover:scale-[1.02]"
         >
-          Start Progressing
+          Create Your Athlete
         </Link>
       </div>
     </header>
   );
 }
 
-function PlayerCardStack() {
-  const cards = [
-    {
-      src: "/cards/card_Julia.png",
-      className: "z-30 rotate-0 scale-100",
-    },
-    {
-      src: "/cards/card_Jaydon.png",
-      className:
-        "z-20 -translate-x-16 translate-y-8 -rotate-6 scale-95 opacity-95",
-    },
-    {
-      src: "/cards/card_David.png",
-      className:
-        "z-10 translate-x-16 translate-y-10 rotate-6 scale-95 opacity-95",
-    },
-  ];
-
+function HeroCards() {
   return (
-    <div className="relative mx-auto h-[560px] w-[420px]">
-      {cards.map((card) => (
-        <img
-          key={card.src}
-          src={card.src}
-          alt="IY Player Card"
-          className={`absolute left-1/2 top-0 h-[540px] w-auto -translate-x-1/2 rounded-[2rem] shadow-2xl shadow-black/25 transition duration-500 hover:z-40 hover:-translate-y-4 hover:scale-105 ${card.className}`}
-        />
-      ))}
+    <div className="relative hidden h-[720px] items-center justify-center md:flex">
+      <img
+        src="/cards/card_julia.png"
+        alt="Player Card Julia"
+        className="absolute left-0 top-20 z-30 w-[340px] rotate-[-4deg] rounded-[2rem] shadow-2xl shadow-black/30"
+      />
+
+      <img
+        src="/cards/card_felix.png"
+        alt="Player Card Felix"
+        className="absolute left-[180px] top-8 z-20 w-[320px] rotate-[6deg] rounded-[2rem] opacity-95 shadow-xl shadow-black/20"
+      />
+
+      <img
+        src="/cards/card_david.png"
+        alt="Player Card David"
+        className="absolute left-[320px] top-28 z-10 w-[300px] rotate-[10deg] rounded-[2rem] opacity-85 shadow-xl shadow-black/20"
+      />
     </div>
   );
 }
 
-function SystemStrip() {
-  const stats = [
+function ValueStrip() {
+  const items = [
     [
-      "REAL MOVEMENT",
+      "Real Movement",
       "Visible Progress",
       "Runs, workouts, recovery and consistency become visible development.",
     ],
     [
-      "GAME DYNAMICS",
+      "Game Dynamics",
       "Instant Feedback",
       "Your player evolves immediately through visible skills, ratings and progress.",
     ],
     [
-      "PLAYER EVOLUTION",
+      "Player Evolution",
       "Build Yourself",
       "Short-term motivation drives long-term physical and personal development.",
     ],
     [
-      "SEASON ZERO",
+      "Season Zero",
       "Now Forming",
       "Become part of the first generation shaping a new world of movement and progression.",
     ],
   ];
 
   return (
-    <div className="relative z-10 mx-auto -mt-10 max-w-7xl px-6">
-      <div className="grid overflow-hidden rounded-2xl border border-black/10 bg-white/90 shadow-xl shadow-black/5 backdrop-blur-xl md:grid-cols-4">
-        {stats.map(([label, value, sub]) => (
+    <div className="relative z-10 mx-auto -mt-12 max-w-7xl px-6">
+      <div className="grid overflow-hidden rounded-3xl border border-black/10 bg-white/90 shadow-2xl shadow-black/5 backdrop-blur-xl md:grid-cols-4">
+        {items.map(([eyebrow, title, text]) => (
           <div
-            key={label}
-            className="border-black/10 p-6 md:border-r last:md:border-r-0"
+            key={title}
+            className="border-black/10 p-8 md:border-r last:md:border-r-0"
           >
-            <p className="text-[11px] font-black uppercase tracking-[0.16em] text-black/55">
-              {label}
+            <p className="text-xs font-black uppercase tracking-[0.22em] text-black/45">
+              {eyebrow}
             </p>
-            <p className="mt-2 text-3xl font-black uppercase tracking-tight text-black">
-              {value}
+
+            <h3 className="mt-5 text-3xl font-black uppercase leading-none tracking-tight text-black">
+              {title}
+            </h3>
+
+            <p className="mt-5 text-base leading-relaxed text-black/60">
+              {text}
             </p>
-            <p className="mt-2 text-sm leading-relaxed text-black/55">{sub}</p>
           </div>
         ))}
       </div>
@@ -135,285 +130,142 @@ function Section({
   return (
     <section className="border-t border-black/10 bg-[#f7f7f2]">
       <div className="mx-auto max-w-7xl px-6 py-16 md:py-24">
-        <div className="mx-auto max-w-3xl text-center">
+        <div className="mx-auto max-w-4xl text-center">
           <p className="text-xs font-black uppercase tracking-[0.28em] text-black/45">
             {eyebrow}
           </p>
-          <h2 className="mt-4 text-4xl font-black uppercase leading-[0.95] tracking-tight text-black md:text-6xl">
+
+          <h2 className="mt-4 text-5xl font-black uppercase leading-[0.92] tracking-tight text-black md:text-7xl">
             {title}
           </h2>
+
           {text && (
-            <p className="mt-6 text-lg leading-relaxed text-black/65">
+            <p className="mx-auto mt-8 max-w-3xl text-xl leading-relaxed text-black/65">
               {text}
             </p>
           )}
         </div>
-        {children && <div className="mt-12">{children}</div>}
+
+        {children && <div className="mt-16">{children}</div>}
       </div>
     </section>
   );
 }
 
-function FeatureCard({
-  index,
-  title,
-  text,
-  image,
-  imagePosition = "object-center",
-}: {
-  index: string;
-  title: string;
-  text: string;
-  image: string;
-  imagePosition?: string;
-}) {
+function PlayerStatus() {
+  const items = [
+    [
+      "Rookie",
+      "42 OVR",
+      "Every athlete starts somewhere. Movement and consistency shape progression.",
+    ],
+    [
+      "Starter",
+      "58 OVR",
+      "Visible stats, skills and development create motivation and identity.",
+    ],
+    [
+      "Elite",
+      "74 OVR",
+      "Higher status, stronger progression and new opportunities become available.",
+    ],
+    [
+      "Pro",
+      "91 OVR",
+      "Top players unlock visibility, recognition and advanced progression.",
+    ],
+  ];
+
   return (
-    <div className="group overflow-hidden rounded-3xl border border-black/10 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-black/10">
-      <div className="aspect-[4/3] overflow-hidden bg-[#ecece5]">
-        <img
-          src={image}
-          alt={title}
-          className={`h-full w-full object-cover ${imagePosition} transition duration-700 group-hover:scale-105`}
-        />
-      </div>
-      <div className="p-6">
-        <p className="text-xs font-black uppercase tracking-[0.2em] text-black/45">
-          {index}
-        </p>
-        <h3 className="mt-3 text-2xl font-black uppercase leading-none tracking-tight text-black">
-          {title}
-        </h3>
-        <p className="mt-4 text-sm leading-relaxed text-black/65">{text}</p>
-      </div>
+    <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+      {items.map(([level, ovr, text]) => (
+        <div
+          key={level}
+          className="rounded-3xl border border-black/10 bg-white p-8 shadow-sm"
+        >
+          <p className="text-xs font-black uppercase tracking-[0.2em] text-black/45">
+            {ovr}
+          </p>
+
+          <h3 className="mt-4 text-4xl font-black uppercase tracking-tight text-black">
+            {level}
+          </h3>
+
+          <p className="mt-5 text-base leading-relaxed text-black/60">
+            {text}
+          </p>
+        </div>
+      ))}
     </div>
   );
 }
 
-function PlayerStatusSection() {
-  const stages = [
-    {
-      stage: "Level 01",
-      title: "Rookie",
-      rating: "42 OVR",
-      text: "Every player starts somewhere. Movement and consistency develop your progress step by step.",
-      image: "/players/stufe1.jpg",
-    },
-    {
-      stage: "Level 02",
-      title: "Starter",
-      rating: "58 OVR",
-      text: "Your stats rise, your progress becomes visible and your player identity starts to evolve.",
-      image: "/players/stufe2.jpg",
-    },
-    {
-      stage: "Level 03",
-      title: "Elite",
-      rating: "74 OVR",
-      text: "New unlocks, higher status and visible development reflect your long-term progress.",
-      image: "/players/stufe3.jpg",
-    },
-    {
-      stage: "Level 04",
-      title: "Pro",
-      rating: "91 OVR",
-      text: "Top players unlock special styles, new opportunities and higher visibility.",
-      image: "/players/stufe4.jpg",
-    },
+function EcosystemGrid() {
+  const items = [
+    [
+      "Visible Identity",
+      "Your player reflects your development, your status and the brands you stand behind.",
+    ],
+    [
+      "Real Teams",
+      "Your progress contributes to team performance, matchdays and league dynamics.",
+    ],
+    [
+      "Instant Motivation",
+      "Visible progress creates immediate excitement while supporting long-term development.",
+    ],
+    [
+      "Healthy Progression",
+      "Movement, recovery and consistency matter more than endless screen time.",
+    ],
   ];
 
   return (
-    <Section
-      eyebrow="Player Status"
-      title="Your player evolves."
-      text="Visible stats, new skills and rising status make progress feel immediate — while real movement develops you long-term."
-    >
-      <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-        {stages.map((item) => (
-          <div
-            key={item.title}
-            className="group overflow-hidden rounded-3xl border border-black/10 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-black/10"
-          >
-            <div className="relative aspect-[9/16] overflow-hidden bg-[#ecece5]">
-              <img
-                src={item.image}
-                alt={item.title}
-                className="h-full w-full object-cover object-[center_30%] transition duration-700 group-hover:scale-105"
-              />
-              <div className="absolute left-4 top-4 rounded-xl bg-[#00D1B2] px-3 py-2 text-xs font-black uppercase text-black">
-                {item.rating}
-              </div>
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent p-5">
-                <p className="text-xs font-black uppercase tracking-[0.18em] text-white/55">
-                  {item.stage}
-                </p>
-                <h3 className="mt-2 text-3xl font-black uppercase text-white">
-                  {item.title}
-                </h3>
-              </div>
-            </div>
-            <div className="p-6">
-              <p className="text-sm leading-relaxed text-black/65">
-                {item.text}
-              </p>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div className="mt-8 grid gap-6 md:grid-cols-2">
-        <div className="rounded-3xl border border-black/10 bg-white p-8">
-          <p className="text-xs font-black uppercase tracking-[0.2em] text-black/45">
-            Jerseys & Brands
-          </p>
-          <h3 className="mt-3 text-2xl font-black uppercase text-black">
-            Your style
+    <div className="grid gap-6 md:grid-cols-2">
+      {items.map(([title, text]) => (
+        <div
+          key={title}
+          className="rounded-3xl border border-black/10 bg-white p-8 md:p-10"
+        >
+          <h3 className="text-4xl font-black uppercase leading-none tracking-tight text-black">
+            {title}
           </h3>
-          <p className="mt-4 text-black/65">
-            As you progress, you unlock new jerseys, sports brands and
-            individual styles for your player.
+
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-black/65">
+            {text}
           </p>
         </div>
-
-        <div className="rounded-3xl border border-black/10 bg-white p-8">
-          <p className="text-xs font-black uppercase tracking-[0.2em] text-black/45">
-            Identity & Status
-          </p>
-          <h3 className="mt-3 text-2xl font-black uppercase text-black">
-            What you stand for
-          </h3>
-          <p className="mt-4 text-black/65">
-            Your progress becomes visible through status, styles, brands and the
-            identity your player carries into the world.
-          </p>
-        </div>
-      </div>
-    </Section>
-  );
-}
-
-function MatchdaySection() {
-  return (
-    <Section
-      eyebrow="Teams & Leagues"
-      title="Real game dynamics."
-      text="Promotion, rivalries and matchdays turn real movement into a living sports world."
-    >
-      <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-        <div className="relative overflow-hidden rounded-3xl border border-black/10 bg-white p-8 md:p-10">
-          <img
-            src="/logik/team.jpg"
-            alt="Team"
-            className="absolute inset-0 h-full w-full object-cover opacity-20"
-          />
-          <div className="relative">
-            <p className="text-xs font-black uppercase tracking-[0.22em] text-black/45">
-              Matchday 07
-            </p>
-            <h3 className="mt-4 text-4xl font-black uppercase leading-none tracking-tight text-black md:text-5xl">
-              Move United
-              <br />
-              vs Berlin Athletics
-            </h3>
-
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              <div className="rounded-2xl bg-black p-5 text-white">
-                <p className="text-xs font-black uppercase tracking-[0.18em] text-white/45">
-                  Team Power
-                </p>
-                <p className="mt-2 text-5xl font-black text-[#00D1B2]">78</p>
-              </div>
-              <div className="rounded-2xl border border-black/10 bg-white/80 p-5">
-                <p className="text-xs font-black uppercase tracking-[0.18em] text-black/45">
-                  Weekly Form
-                </p>
-                <p className="mt-2 text-5xl font-black text-black">+12%</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="rounded-3xl border border-black/10 bg-white p-8 md:p-10">
-          <p className="text-xs font-black uppercase tracking-[0.22em] text-black/45">
-            League Table
-          </p>
-          <div className="mt-6 space-y-3">
-            {[
-              ["1", "North Squad", "82"],
-              ["2", "Move United", "78"],
-              ["3", "Berlin Athletics", "74"],
-              ["4", "Urban Runners", "69"],
-            ].map(([rank, team, rating]) => (
-              <div
-                key={team}
-                className="flex items-center justify-between rounded-2xl border border-black/10 bg-[#f7f7f2] px-4 py-4"
-              >
-                <div className="flex items-center gap-4">
-                  <span className="text-sm font-black text-black/45">
-                    #{rank}
-                  </span>
-                  <span className="font-black uppercase text-black">
-                    {team}
-                  </span>
-                </div>
-                <span className="rounded-xl bg-[#00D1B2] px-3 py-2 text-xs font-black text-black">
-                  {rating}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </Section>
+      ))}
+    </div>
   );
 }
 
 function CTASection() {
   return (
     <section className="bg-[#f7f7f2] px-6 pb-16 md:pb-24">
-      <div className="mx-auto grid max-w-7xl gap-6 md:grid-cols-2">
-        <div className="rounded-3xl border border-black/10 bg-white p-8 md:p-10">
-          <p className="text-xs font-black uppercase tracking-[0.22em] text-black/55">
-            Season Zero
-          </p>
-          <h2 className="mt-4 text-4xl font-black uppercase leading-none tracking-tight md:text-5xl">
-            Your progress starts now.
-          </h2>
-          <p className="mt-6 max-w-md text-black/65">
-            Join the first people connecting real movement, visible progress and
-            true game motivation.
-          </p>
+      <div className="mx-auto rounded-3xl border border-black/10 bg-black p-8 text-white md:max-w-7xl md:p-12">
+        <p className="text-xs font-black uppercase tracking-[0.22em] text-white/45">
+          Season Zero
+        </p>
+
+        <div className="mt-4 grid gap-8 md:grid-cols-[1fr_0.6fr] md:items-end">
+          <div>
+            <h2 className="text-4xl font-black uppercase leading-none tracking-tight md:text-6xl">
+              The movement is just beginning.
+            </h2>
+
+            <p className="mt-6 max-w-2xl text-white/65">
+              Build your player, shape your identity and become part of a new
+              world of visible real-world progression.
+            </p>
+          </div>
+
           <Link
             href="/players"
-            className="mt-8 inline-flex rounded-xl bg-[#00D1B2] px-6 py-4 text-xs font-black uppercase tracking-[0.14em] text-black"
+            className="inline-flex justify-center rounded-xl bg-[#00D1B2] px-7 py-4 text-xs font-black uppercase tracking-[0.14em] text-black"
           >
-            Start your progression →
+            Start Progressing →
           </Link>
-        </div>
-
-        <div className="relative overflow-hidden rounded-3xl border border-black/10 bg-white p-8 md:p-10">
-          <img
-            src="/vision/vision_05.jpg"
-            alt="Season Zero"
-            className="absolute inset-0 h-full w-full object-cover object-[center_25%] opacity-35"
-          />
-          <div className="relative max-w-md">
-            <p className="text-xs font-black uppercase tracking-[0.22em] text-black/55">
-              Season Zero
-            </p>
-            <h2 className="mt-4 text-4xl font-black uppercase leading-none tracking-tight md:text-5xl">
-              The first generation is forming.
-            </h2>
-            <p className="mt-6 text-black/70">
-              Athletes, creators, teams, gyms and brands are shaping the first
-              real-world progression platform.
-            </p>
-            <Link
-              href="/partners"
-              className="mt-8 inline-flex rounded-xl bg-black px-6 py-4 text-xs font-black uppercase tracking-[0.14em] text-white"
-            >
-              Build with us →
-            </Link>
-          </div>
         </div>
       </div>
     </section>
@@ -428,22 +280,24 @@ export default function HomePage() {
       <section className="relative overflow-hidden bg-[#f7f7f2]">
         <div className="absolute inset-0">
           <img
-            src="/header/header_16:9_03.png"
-            alt="IY Movement"
+            src="/vision/vision_05.jpg"
+            alt="Movement"
             className="h-full w-full object-cover opacity-95"
-            style={{ objectPosition: "center 25%" }}
+            style={{ objectPosition: "center 20%" }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#f7f7f2]/88 via-[#f7f7f2]/45 to-transparent" />
+
+          <div className="absolute inset-0 bg-gradient-to-r from-[#f7f7f2]/92 via-[#f7f7f2]/65 to-transparent" />
+
           <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#f7f7f2] to-transparent" />
         </div>
 
-        <div className="relative mx-auto grid min-h-[78vh] max-w-7xl items-center gap-10 px-6 py-20 md:grid-cols-[1.1fr_0.9fr]">
+        <div className="relative mx-auto grid min-h-[88vh] max-w-7xl items-center gap-12 px-6 py-20 md:grid-cols-[0.9fr_1.1fr]">
           <div className="max-w-2xl">
             <p className="mb-5 text-xs font-black uppercase tracking-[0.24em] text-black/65">
               The first real-world progression platform
             </p>
 
-            <h1 className="text-6xl font-black uppercase leading-[0.88] tracking-tight text-black md:text-8xl xl:text-[7.4rem]">
+            <h1 className="text-6xl font-black uppercase leading-[0.88] tracking-tight text-black md:text-8xl xl:text-[7rem]">
               Move.
               <br />
               Play.
@@ -453,10 +307,8 @@ export default function HomePage() {
               </span>
             </h1>
 
-            <p className="mt-8 max-w-md text-xl leading-relaxed text-black/75">
-              Instant visible progress.
-              <br />
-              Real-world development.
+            <p className="mt-8 max-w-xl text-xl leading-relaxed text-black/75">
+              The dynamics of games for real-world development.
             </p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
@@ -464,34 +316,39 @@ export default function HomePage() {
                 href="/players"
                 className="inline-flex items-center justify-center rounded-xl bg-[#00D1B2] px-7 py-4 text-xs font-black uppercase tracking-[0.14em] text-black transition hover:scale-[1.02]"
               >
-                Start your progression →
+                Create Your Athlete →
               </Link>
+
               <Link
                 href="/partners"
                 className="inline-flex items-center justify-center rounded-xl px-4 py-4 text-xs font-black uppercase tracking-[0.14em] text-black transition hover:bg-white"
               >
-                Build with us →
+                Partner With Us →
               </Link>
             </div>
           </div>
 
-          <div className="hidden justify-end md:flex">
-            <PlayerCardStack />
-          </div>
+          <HeroCards />
         </div>
       </section>
 
-      <SystemStrip />
-
-      <PlayerStatusSection />
-
-      <MatchdaySection />
+      <ValueStrip />
 
       <Section
-        eyebrow="Healthy development"
-        title="Long-term progress."
-        text="Visible motivation creates short-term excitement. Real movement builds long-term health, fitness and habits."
-      />
+        eyebrow="Player Status"
+        title="From rookie to pro."
+        text="Visible progression, instant feedback and long-term development create motivation beyond traditional fitness."
+      >
+        <PlayerStatus />
+      </Section>
+
+      <Section
+        eyebrow="The Ecosystem"
+        title="Movement becomes identity."
+        text="Player development, teams, brands and progression create a new world built around real movement."
+      >
+        <EcosystemGrid />
+      </Section>
 
       <CTASection />
     </main>
