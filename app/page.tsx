@@ -400,7 +400,7 @@ export default function HomePage() {
             src="/header/header_16:9_03.png"
             alt="IY Movement"
             className="h-full w-full object-cover opacity-95"
-            style={{ objectPosition: "center 25%" }}
+            style={{ objectPosition: "78% 25%" }}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#f7f7f2]/88 via-[#f7f7f2]/45 to-transparent" />
           <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#f7f7f2] to-transparent" />
