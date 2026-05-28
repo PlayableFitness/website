@@ -48,16 +48,16 @@ function Navbar() {
 function PlayerCardStack() {
   const cards = [
     {
-      src: "/cards/card_julia.png",
+      src: "/cards/card_Julia.png",
       className: "z-30 rotate-0 scale-100",
     },
     {
-      src: "/cards/card_jaydon.png",
+      src: "/cards/card_Jaydon.png",
       className:
         "z-20 -translate-x-16 translate-y-8 -rotate-6 scale-95 opacity-95",
     },
     {
-      src: "/cards/card_david.png",
+      src: "/cards/card_David.png",
       className:
         "z-10 translate-x-16 translate-y-10 rotate-6 scale-95 opacity-95",
     },
