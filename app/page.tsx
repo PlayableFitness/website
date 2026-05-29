@@ -209,16 +209,53 @@ function MatchdaySection() {
               <br />
               vs Berlin Ballers
             </h3>
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              <div className="rounded-2xl bg-black p-5 text-white">
-                <p className="text-xs font-black uppercase tracking-[0.18em] text-white/45">Team Power</p>
-                <p className="mt-2 text-5xl font-black text-[#00D1B2]">78</p>
-              </div>
-              <div className="rounded-2xl border border-black/10 bg-white/80 p-5">
-                <p className="text-xs font-black uppercase tracking-[0.18em] text-black/45">Weekly Form</p>
-                <p className="mt-2 text-5xl font-black text-black">+12%</p>
-              </div>
-            </div>
+            <div className="mt-6 rounded-2xl bg-black p-5 text-white">
+  <p className="text-xs font-black uppercase tracking-[0.18em] text-white/45">
+    Last Simulated Match
+  </p>
+
+  <div className="mt-4 flex items-center justify-between gap-4">
+    <div>
+      <p className="text-sm font-black uppercase text-white/55">
+        LA United
+      </p>
+      <p className="mt-1 text-sm font-black uppercase text-white/55">
+        Berlin Ballers
+      </p>
+    </div>
+
+    <div className="text-right">
+      <p className="text-4xl font-black leading-none text-[#00D1B2]">
+        3
+      </p>
+      <p className="mt-1 text-4xl font-black leading-none text-white">
+        1
+      </p>
+    </div>
+  </div>
+
+  <p className="mt-4 text-sm leading-relaxed text-white/60">
+    LA United gains 3 points. Team Power and weekly form contributed to the result.
+  </p>
+</div>
+
+<div className="mt-4 grid gap-4 sm:grid-cols-2">
+  <div className="rounded-2xl bg-black p-5 text-white">
+    <p className="text-xs font-black uppercase tracking-[0.18em] text-white/45">
+      Team Power
+    </p>
+    <p className="mt-2 text-5xl font-black text-[#00D1B2]">
+      78
+    </p>
+  </div>
+
+  <div className="rounded-2xl border border-black/10 bg-white/80 p-5">
+    <p className="text-xs font-black uppercase tracking-[0.18em] text-black/45">
+      Weekly Form
+    </p>
+    <p className="mt-2 text-5xl font-black text-black">+12%</p>
+  </div>
+</div>
           </div>
         </div>
 
