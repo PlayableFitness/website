@@ -207,11 +207,13 @@ function MatchdaySection() {
             <h3 className="mt-4 text-4xl font-black uppercase leading-none tracking-tight text-black md:text-5xl">
               LA United
               <br />
-              vs Berlin Ballers
+              vs 
+              <br />
+              Berlin Ballers
             </h3>
             <div className="mt-6 rounded-2xl bg-black p-5 text-white">
   <p className="text-xs font-black uppercase tracking-[0.18em] text-white/45">
-    Last Simulated Match
+    Last match
   </p>
 
   <div className="mt-4 flex items-center justify-between gap-4">
@@ -234,9 +236,6 @@ function MatchdaySection() {
     </div>
   </div>
 
-  <p className="mt-4 text-sm leading-relaxed text-white/60">
-    LA United gains 3 points. Team Power and weekly form contributed to the result.
-  </p>
 </div>
 
 <div className="mt-4 grid gap-4 sm:grid-cols-2">
