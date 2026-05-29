@@ -205,9 +205,9 @@ function MatchdaySection() {
           <div className="relative">
             <p className="text-xs font-black uppercase tracking-[0.22em] text-black/45">Matchday 07</p>
             <h3 className="mt-4 text-4xl font-black uppercase leading-none tracking-tight text-black md:text-5xl">
-              Move United
+              LA United
               <br />
-              vs Berlin Athletics
+              vs Berlin Ballers
             </h3>
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
               <div className="rounded-2xl bg-black p-5 text-white">
@@ -227,8 +227,8 @@ function MatchdaySection() {
           <div className="mt-6 space-y-3">
             {[
               ["1", "North Squad", "82"],
-              ["2", "Move United", "78"],
-              ["3", "Berlin Athletics", "74"],
+              ["2", "LA United", "78"],
+              ["3", "Berlin Ballers", "74"],
               ["4", "Urban Runners", "69"],
             ].map(([rank, team, rating]) => (
               <div key={team} className="flex items-center justify-between rounded-2xl border border-black/10 bg-[#f7f7f2] px-4 py-4">
