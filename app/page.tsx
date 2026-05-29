@@ -223,24 +223,46 @@ function MatchdaySection() {
         </div>
 
         <div className="rounded-3xl border border-black/10 bg-white p-8 md:p-10">
-          <p className="text-xs font-black uppercase tracking-[0.22em] text-black/45">League Table</p>
-          <div className="mt-6 space-y-3">
-            {[
-              ["1", "North Squad", "82"],
-              ["2", "LA United", "78"],
-              ["3", "Berlin Ballers", "74"],
-              ["4", "Urban Runners", "69"],
-            ].map(([rank, team, rating]) => (
-              <div key={team} className="flex items-center justify-between rounded-2xl border border-black/10 bg-[#f7f7f2] px-4 py-4">
-                <div className="flex items-center gap-4">
-                  <span className="text-sm font-black text-black/45">#{rank}</span>
-                  <span className="font-black uppercase text-black">{team}</span>
-                </div>
-                <span className="rounded-xl bg-[#00D1B2] px-3 py-2 text-xs font-black text-black">{rating}</span>
-              </div>
-            ))}
-          </div>
+  <p className="text-xs font-black uppercase tracking-[0.22em] text-black/45">
+    League Table
+  </p>
+
+  <div className="mt-6 overflow-hidden rounded-2xl border border-black/10">
+      <div className="grid grid-cols-[0.5fr_1.8fr_0.6fr_0.6fr_0.6fr_0.6fr_0.8fr_0.8fr] bg-black px-3 py-3 text-[10px] font-black uppercase tracking-[0.12em] text-white/55">
+        <span>#</span>
+        <span>Team</span>
+        <span className="text-center">P</span>
+        <span className="text-center">W</span>
+        <span className="text-center">D</span>
+        <span className="text-center">L</span>
+        <span className="text-center">GD</span>
+        <span className="text-center">OVR</span>
+      </div>
+  
+      {[
+        ["1", "North Squad", "6", "5", "1", "0", "+18", "82"],
+        ["2", "LA United", "6", "4", "1", "1", "+11", "78"],
+        ["3", "Berlin Ballers", "6", "3", "1", "2", "+7", "74"],
+        ["4", "Urban Runners", "6", "2", "0", "4", "-6", "69"],
+      ].map(([rank, team, played, won, draw, lost, gd, ovr]) => (
+        <div
+          key={team}
+          className="grid grid-cols-[0.5fr_1.8fr_0.6fr_0.6fr_0.6fr_0.6fr_0.8fr_0.8fr] items-center border-t border-black/10 bg-[#f7f7f2] px-3 py-4 text-sm"
+        >
+          <span className="font-black text-black/45">#{rank}</span>
+          <span className="font-black uppercase text-black">{team}</span>
+          <span className="text-center font-bold text-black/60">{played}</span>
+          <span className="text-center font-bold text-black/60">{won}</span>
+          <span className="text-center font-bold text-black/60">{draw}</span>
+          <span className="text-center font-bold text-black/60">{lost}</span>
+          <span className="text-center font-black text-black">{gd}</span>
+          <span className="mx-auto rounded-xl bg-[#00D1B2] px-3 py-2 text-xs font-black text-black">
+            {ovr}
+          </span>
         </div>
+      ))}
+    </div>
+  </div>
       </div>
     </Section>
   );
