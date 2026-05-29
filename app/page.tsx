@@ -313,8 +313,11 @@ export default function HomePage() {
               <Link href="/players" className="inline-flex items-center justify-center rounded-xl bg-[#00D1B2] px-7 py-4 text-xs font-black uppercase tracking-[0.14em] text-black transition hover:scale-[1.02]">
                 Start your progression →
               </Link>
-              <Link href="/partners" className="inline-flex items-center justify-center rounded-xl px-4 py-4 text-xs font-black uppercase tracking-[0.14em] text-black transition hover:bg-white">
-                Build with us →
+              <Link
+                href="/partners"
+                className="inline-flex items-center justify-center rounded-xl border border-black/15 bg-white/70 px-6 py-4 text-xs font-black uppercase tracking-[0.14em] text-black transition hover:bg-white hover:border-black/30"
+              >
+                For Brands & Partners →
               </Link>
             </div>
 
