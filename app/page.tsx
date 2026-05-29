@@ -20,9 +20,6 @@ function Navbar() {
           <Link href="/partners">Partners</Link>
         </nav>
 
-        <Link href="/players" className="rounded-xl bg-[#00D1B2] px-5 py-3 text-xs font-black uppercase tracking-[0.12em] text-black">
-          Start Progressing
-        </Link>
       </div>
     </header>
   );
