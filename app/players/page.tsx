@@ -5,24 +5,15 @@ function Navbar() {
     <header className="sticky top-0 z-50 border-b border-black/10 bg-[#f7f7f2]/85 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Link href="/" className="flex items-center gap-3">
-          <img
-            src="/logo/IY Logo.png"
-            alt="IY Logo"
-            className="h-10 w-10 rounded-xl object-cover"
-          />
-          <div className="leading-none">
-            <div className="text-xs font-semibold uppercase tracking-[0.32em] text-black/55">
-              Improve Yourself
-            </div>
+          <img src="/logo/IY Logo.png" alt="IY Logo" className="h-10 w-10 rounded-xl object-cover" />
+          <div className="text-xs font-semibold uppercase tracking-[0.28em] text-black/55">
+            Improve Yourself
           </div>
         </Link>
 
-        <nav className="hidden items-center gap-8 text-xs font-bold uppercase tracking-[0.12em] text-black/70 md:flex">
+        <nav className="hidden items-center gap-8 text-xs font-semibold uppercase tracking-[0.12em] text-black/65 md:flex">
           <Link href="/">Home</Link>
-          <Link
-            href="/players"
-            className="text-black underline decoration-[#00D1B2] decoration-2 underline-offset-8"
-          >
+          <Link href="/players" className="text-black underline decoration-[#00D1B2] decoration-2 underline-offset-8">
             Players
           </Link>
           <Link href="/partners">Partners</Link>
@@ -30,12 +21,20 @@ function Navbar() {
 
         <Link
           href="/partners"
-          className="rounded-xl bg-[#00D1B2] px-5 py-3 text-xs font-black uppercase tracking-[0.12em] text-black transition hover:scale-[1.02]"
+          className="rounded-xl bg-[#00D1B2] px-5 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-black transition hover:scale-[1.02]"
         >
           Partners
         </Link>
       </div>
     </header>
+  );
+}
+
+function Eyebrow({ children }: { children: React.ReactNode }) {
+  return (
+    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-black/45">
+      {children}
+    </p>
   );
 }
 
@@ -54,17 +53,11 @@ function Section({
     <section className="border-t border-black/10 bg-[#f7f7f2]">
       <div className="mx-auto max-w-7xl px-6 py-16 md:py-24">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="text-xs font-black uppercase tracking-[0.28em] text-black/45">
-            {eyebrow}
-          </p>
-          <h2 className="mt-4 text-4xl font-black uppercase leading-[0.95] tracking-tight text-black md:text-6xl">
+          <Eyebrow>{eyebrow}</Eyebrow>
+          <h2 className="mt-4 text-4xl font-semibold leading-[1.02] tracking-tight text-black md:text-6xl">
             {title}
           </h2>
-          {text && (
-            <p className="mt-6 text-lg leading-relaxed text-black/65">
-              {text}
-            </p>
-          )}
+          {text && <p className="mt-6 text-lg leading-relaxed text-black/65">{text}</p>}
         </div>
         {children && <div className="mt-12">{children}</div>}
       </div>
@@ -102,54 +95,54 @@ function HeroCardShowcase() {
   );
 }
 
-function EarlyAccessForm() {
-  return (
-    <form className="mt-8 max-w-xl rounded-3xl border border-black/10 bg-white/80 p-4 shadow-xl shadow-black/5 backdrop-blur-xl">
-      <p className="px-2 text-xs font-black uppercase tracking-[0.18em] text-black/45">
-        Season Zero Early Access
-      </p>
-      <div className="mt-3 grid gap-3 sm:grid-cols-[1fr_auto]">
-        <input
-          type="email"
-          placeholder="Your email"
-          className="rounded-xl border border-black/10 bg-[#f7f7f2] px-4 py-4 text-sm font-semibold text-black outline-none placeholder:text-black/35 focus:border-[#00D1B2]"
-        />
-        <button
-          type="submit"
-          className="rounded-xl bg-[#00D1B2] px-6 py-4 text-xs font-black uppercase tracking-[0.14em] text-black transition hover:scale-[1.02]"
-        >
-          Become a Founding Player
-        </button>
-      </div>
-    </form>
-  );
-}
-
-function ProgressionMap() {
-  const items = [
-    ["Running", "PACE • STAMINA • ENDURANCE"],
-    ["Strength", "POWER • SKILL • INTENSITY"],
-    ["Consistency", "STATUS • PROGRESSION • IMPACT"],
-    ["Recovery", "RECOVERY • BALANCE • LONGEVITY"],
-    ["Team Activity", "TEAM POWER • MATCHDAY ENERGY"],
+function SkillSystem() {
+  const skills = [
+    ["Pace", "Speed, running and explosive movement.", "Tempo"],
+    ["Power", "High intensity, explosive output and athletic impact.", "Power"],
+    ["Endurance", "Longer efforts, cardio base and sustained activity.", "Ausdauer"],
+    ["Strength", "Strength training, resistance work and physical force.", "Kraft"],
+    ["Recovery", "Balance, regeneration, yoga, sleep and nutrition habits.", "Recovery"],
+    ["Discipline", "Consistency, rhythm and showing up again.", "Konstanz"],
   ];
 
   return (
-    <div className="grid gap-4 md:grid-cols-5">
-      {items.map(([real, game]) => (
-        <div
-          key={real}
-          className="rounded-3xl border border-black/10 bg-white p-6 text-center shadow-sm"
-        >
-          <p className="text-xs font-black uppercase tracking-[0.18em] text-black/45">
-            Real Life
-          </p>
-          <p className="mt-3 text-xl font-black uppercase text-black">{real}</p>
-          <div className="mx-auto my-5 h-8 w-8 rounded-full bg-[#00D1B2]" />
-          <p className="text-xs font-black uppercase tracking-[0.18em] text-black/45">
-            Player System
-          </p>
-          <p className="mt-3 text-sm font-black uppercase text-black">{game}</p>
+    <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+      {skills.map(([title, text, label], index) => (
+        <div key={title} className="rounded-3xl border border-black/10 bg-white p-7 shadow-sm">
+          <div className="flex items-center justify-between">
+            <h3 className="text-2xl font-semibold text-black">{title}</h3>
+            <span className="rounded-xl bg-[#00D1B2] px-3 py-2 text-xs font-semibold text-black">
+              {label}
+            </span>
+          </div>
+          <p className="mt-4 text-sm leading-relaxed text-black/65">{text}</p>
+
+          <div className="mt-6 h-3 overflow-hidden rounded-full bg-black/10">
+            <div
+              className="h-full rounded-full bg-[#00D1B2]"
+              style={{ width: `${58 + index * 6}%` }}
+            />
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function ProgressionRules() {
+  const rules = [
+    ["Start fast", "Lower values grow faster, so beginners feel progress immediately."],
+    ["Stay active", "Higher values need consistency and regular activity to remain strong."],
+    ["Come back", "After breaks or injuries, players can regain their level faster again."],
+    ["Stay fair", "No Pay2Win. Your player grows through real movement."],
+  ];
+
+  return (
+    <div className="grid gap-6 md:grid-cols-4">
+      {rules.map(([title, text]) => (
+        <div key={title} className="rounded-3xl border border-black/10 bg-white p-7 shadow-sm">
+          <h3 className="text-2xl font-semibold text-black">{title}</h3>
+          <p className="mt-4 text-sm leading-relaxed text-black/65">{text}</p>
         </div>
       ))}
     </div>
@@ -158,30 +151,10 @@ function ProgressionMap() {
 
 function CareerPath() {
   const stages = [
-    [
-      "42 OVR",
-      "Rookie",
-      "/cards/card_David.png",
-      "Every player starts somewhere. Movement and consistency develop your progress step by step.",
-    ],
-    [
-      "58 OVR",
-      "Starter",
-      "/cards/card_Felix.png",
-      "Your stats rise, your progress becomes visible and your player identity starts to evolve.",
-    ],
-    [
-      "84 OVR",
-      "Elite",
-      "/cards/card_Julia.png",
-      "New unlocks, higher status and visible development reflect your long-term progress.",
-    ],
-    [
-      "91 OVR",
-      "Pro",
-      "/cards/card_Jaydon.png",
-      "Top players unlock special styles, new opportunities and higher visibility.",
-    ],
+    ["42 OVR", "Rookie", "/cards/card_David.png", "Start your journey. Small activities already create visible progress."],
+    ["58 OVR", "Starter", "/cards/card_Felix.png", "Build rhythm, improve your skills and help your team."],
+    ["84 OVR", "Elite", "/cards/card_Julia.png", "Earn status, better cards and stronger visibility in the league."],
+    ["91 OVR", "Pro", "/cards/card_Jaydon.png", "Unlock rare sponsors, special cards and premium recognition."],
   ];
 
   return (
@@ -192,53 +165,17 @@ function CareerPath() {
           className="group overflow-hidden rounded-3xl border border-black/10 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-black/10"
         >
           <div className="relative aspect-[3/4] overflow-hidden bg-[#ecece5]">
-            <img
-              src={image}
-              alt={title}
-              className="h-full w-full object-cover object-top transition duration-700 group-hover:scale-105"
-            />
-            <div className="absolute left-4 top-4 rounded-xl bg-[#00D1B2] px-3 py-2 text-xs font-black uppercase text-black">
+            <img src={image} alt={title} className="h-full w-full object-cover object-top transition duration-700 group-hover:scale-105" />
+            <div className="absolute left-4 top-4 rounded-xl bg-[#00D1B2] px-3 py-2 text-xs font-semibold text-black">
               {rating}
             </div>
           </div>
           <div className="p-6">
-            <h3 className="text-2xl font-black uppercase text-black">
-              {title}
-            </h3>
-            <p className="mt-4 text-sm leading-relaxed text-black/65">
-              {text}
-            </p>
+            <h3 className="text-2xl font-semibold text-black">{title}</h3>
+            <p className="mt-4 text-sm leading-relaxed text-black/65">{text}</p>
           </div>
         </div>
       ))}
-    </div>
-  );
-}
-
-function FeatureCard({
-  title,
-  text,
-  image,
-}: {
-  title: string;
-  text: string;
-  image: string;
-}) {
-  return (
-    <div className="group overflow-hidden rounded-3xl border border-black/10 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-black/10">
-      <div className="aspect-[4/3] overflow-hidden bg-[#ecece5]">
-        <img
-          src={image}
-          alt={title}
-          className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
-        />
-      </div>
-      <div className="p-6">
-        <h3 className="text-2xl font-black uppercase leading-none tracking-tight text-black">
-          {title}
-        </h3>
-        <p className="mt-4 text-sm leading-relaxed text-black/65">{text}</p>
-      </div>
     </div>
   );
 }
@@ -247,62 +184,50 @@ function MatchdayPanel() {
   return (
     <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
       <div className="relative overflow-hidden rounded-3xl border border-black/10 bg-white p-8 md:p-10">
-        <img
-          src="/logik/team.jpg"
-          alt="Club Matchday"
-          className="absolute inset-0 h-full w-full object-cover opacity-20"
-        />
+        <img src="/logik/team.jpg" alt="Club Matchday" className="absolute inset-0 h-full w-full object-cover opacity-20" />
         <div className="relative">
-          <p className="text-xs font-black uppercase tracking-[0.22em] text-black/45">
-            Matchday 07
-          </p>
-          <h3 className="mt-4 text-4xl font-black uppercase leading-none tracking-tight text-black md:text-5xl">
-            Move United
+          <Eyebrow>Matchday 07</Eyebrow>
+          <h3 className="mt-4 text-4xl font-semibold leading-none tracking-tight text-black md:text-5xl">
+            LA United
             <br />
-            vs Berlin Athletics
+            vs
+            <br />
+            Berlin Ballers
           </h3>
+
+          <p className="mt-6 max-w-md text-black/65">
+            Your recent activity, form and skills can change the result.
+          </p>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
             <div className="rounded-2xl bg-black p-5 text-white">
-              <p className="text-xs font-black uppercase tracking-[0.18em] text-white/45">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/45">
                 Team Power
               </p>
-              <p className="mt-2 text-5xl font-black text-[#00D1B2]">78</p>
+              <p className="mt-2 text-5xl font-semibold text-[#00D1B2]">78</p>
             </div>
             <div className="rounded-2xl border border-black/10 bg-white/80 p-5">
-              <p className="text-xs font-black uppercase tracking-[0.18em] text-black/45">
-                Weekly Form
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-black/45">
+                Last 3 Days
               </p>
-              <p className="mt-2 text-5xl font-black text-black">+12%</p>
+              <p className="mt-2 text-5xl font-semibold text-black">+12%</p>
             </div>
           </div>
         </div>
       </div>
 
       <div className="rounded-3xl border border-black/10 bg-white p-8 md:p-10">
-        <p className="text-xs font-black uppercase tracking-[0.22em] text-black/45">
-          League Table
-        </p>
-        <div className="mt-6 space-y-3">
+        <Eyebrow>Your Impact</Eyebrow>
+        <div className="mt-6 space-y-4">
           {[
-            ["1", "North Squad", "82"],
-            ["2", "Move United", "78"],
-            ["3", "Berlin Athletics", "74"],
-            ["4", "Urban Runners", "69"],
-          ].map(([rank, team, rating]) => (
-            <div
-              key={team}
-              className="flex items-center justify-between rounded-2xl border border-black/10 bg-[#f7f7f2] px-4 py-4"
-            >
-              <div className="flex items-center gap-4">
-                <span className="text-sm font-black text-black/45">
-                  #{rank}
-                </span>
-                <span className="font-black uppercase text-black">{team}</span>
-              </div>
-              <span className="rounded-xl bg-[#00D1B2] px-3 py-2 text-xs font-black text-black">
-                {rating}
-              </span>
+            ["Skill values", "Your OVR and individual skills shape the team strength."],
+            ["Current form", "Recent activity since the last matchday influences performance."],
+            ["Team energy", "Every player can push the team before the next simulation."],
+            ["Shareable moments", "Wins, MVPs and special cards are built to be shared."],
+          ].map(([title, text]) => (
+            <div key={title} className="rounded-2xl border border-black/10 bg-[#f7f7f2] p-5">
+              <h4 className="font-semibold text-black">{title}</h4>
+              <p className="mt-2 text-sm leading-relaxed text-black/60">{text}</p>
             </div>
           ))}
         </div>
@@ -311,27 +236,51 @@ function MatchdayPanel() {
   );
 }
 
+function RewardsGrid() {
+  const items = [
+    ["Player Cards", "Your card becomes your visible identity — digital, shareable and later physical."],
+    ["Special Cards", "Earn Player of the Matchday, Player of the Season and rare event cards."],
+    ["Jerseys", "Unlock teamwear and outfitters that represent your status."],
+    ["Sponsors", "Carry brands you identify with and are proud to show."],
+    ["Creator Programs", "Join workouts, challenges and programs from athletes and creators."],
+    ["Events", "Meet teams, creators and brands in real-life challenges and community events."],
+  ];
+
+  return (
+    <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+      {items.map(([title, text]) => (
+        <div key={title} className="rounded-3xl border border-black/10 bg-white p-7 shadow-sm">
+          <h3 className="text-2xl font-semibold text-black">{title}</h3>
+          <p className="mt-4 text-sm leading-relaxed text-black/65">{text}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function CTASection() {
   return (
     <section className="bg-[#f7f7f2] px-6 pb-16 md:pb-24">
       <div className="mx-auto rounded-3xl border border-black/10 bg-black p-8 text-white md:max-w-7xl md:p-12">
-        <p className="text-xs font-black uppercase tracking-[0.22em] text-white/45">
-          Your story starts with movement
+        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/45">
+          Your next matchday starts now
         </p>
+
         <div className="mt-4 grid gap-8 md:grid-cols-[1fr_0.6fr] md:items-end">
           <div>
-            <h2 className="text-4xl font-black uppercase leading-none tracking-tight md:text-6xl">
-              Start your progression.
+            <h2 className="text-4xl font-semibold leading-none tracking-tight md:text-6xl">
+              Train today.
+              <br />
+              Change your player.
             </h2>
             <p className="mt-6 max-w-2xl text-white/65">
-              Build your player, develop your identity, rise through matchdays
-              and turn real activity into visible progress.
+              Build skills, earn status and help your team win through real movement.
             </p>
           </div>
 
           <Link
             href="/"
-            className="inline-flex justify-center rounded-xl bg-[#00D1B2] px-7 py-4 text-xs font-black uppercase tracking-[0.14em] text-black"
+            className="inline-flex justify-center rounded-xl bg-[#00D1B2] px-7 py-4 text-xs font-semibold uppercase tracking-[0.14em] text-black"
           >
             Back to Home →
           </Link>
@@ -360,23 +309,34 @@ export default function PlayersPage() {
 
         <div className="relative mx-auto grid min-h-[82vh] max-w-7xl items-center gap-12 px-6 py-20 md:grid-cols-[0.95fr_1.05fr]">
           <div className="max-w-2xl">
-            <p className="mb-5 text-xs font-black uppercase tracking-[0.24em] text-black/65">
+            <p className="mb-5 text-xs font-semibold uppercase tracking-[0.22em] text-black/55">
               Player Experience
             </p>
 
-            <h1 className="text-6xl font-black uppercase leading-[0.88] tracking-tight text-black md:text-8xl xl:text-[7rem]">
-              Evolve your
+            <h1 className="text-6xl font-semibold leading-[0.95] tracking-tight text-black md:text-8xl xl:text-[7rem]">
+              Every workout
               <br />
-              <span className="text-[#00D1B2] drop-shadow-sm">player.</span>
+              changes your player.
             </h1>
 
-            <p className="mt-8 max-w-lg text-xl leading-relaxed text-black/75">
-              Real movement develops your player through visible stats, skills
-              and progress. Matchdays, teams and rankings make development feel
-              motivating, social and alive.
+            <p className="mt-8 max-w-xl text-xl leading-relaxed text-black/75">
+              Train in real life, improve your skills and help your team win the next matchday.
             </p>
 
-            <EarlyAccessForm />
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+              <Link
+                href="/"
+                className="inline-flex items-center justify-center rounded-xl bg-[#00D1B2] px-7 py-4 text-xs font-semibold uppercase tracking-[0.14em] text-black transition hover:scale-[1.02]"
+              >
+                Create Player →
+              </Link>
+              <Link
+                href="/partners"
+                className="inline-flex items-center justify-center rounded-xl border border-black/15 bg-white/70 px-6 py-4 text-xs font-semibold uppercase tracking-[0.14em] text-black transition hover:border-black/30 hover:bg-white"
+              >
+                For Brands & Partners →
+              </Link>
+            </div>
           </div>
 
           <div className="hidden md:block">
@@ -386,63 +346,70 @@ export default function PlayersPage() {
       </section>
 
       <Section
-        eyebrow="Player System"
-        title="Real movement becomes visible progress."
-        text="Every activity can shape your player. Progress is earned through movement, consistency and recovery — not screen time or pay-to-win mechanics."
+        eyebrow="Skill System"
+        title="Your activity becomes your skills."
+        text="Every sport shapes your player differently. Running improves pace and endurance. Strength training builds power and strength. Recovery habits support balance and long-term performance."
       >
-        <ProgressionMap />
+        <SkillSystem />
       </Section>
 
       <Section
-        eyebrow="Career Path"
+        eyebrow="Overall Rating"
+        title="OVR shows your current level. Skills show who you are."
+        text="The overall rating gives a quick view of your player. Individual skills reveal your strengths, focus and playstyle."
+      >
+        <ProgressionRules />
+      </Section>
+
+      <Section
+        eyebrow="Player Identity"
         title="From rookie to pro."
-        text="Your player evolves through visible progress, rising status, new unlocks and long-term real-world development."
+        text="Beginners see fast progress. Higher levels require consistency. Your player grows with you — and can lose form when activity drops."
       >
         <CareerPath />
       </Section>
 
       <Section
-        eyebrow="Core Systems"
-        title="More than individual progress."
-        text="Your player is the beginning. Game dynamics turn movement into identity, matchdays, rankings and shared competition."
-      >
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          <FeatureCard
-            title="Player Cards"
-            text="Your identity becomes visible through ratings, skills, status and style."
-            image="/cards/card_Lena.png"
-          />
-          <FeatureCard
-            title="Teams"
-            text="Your activity contributes to performance, rivalry and shared motivation."
-            image="/logik/team.jpg"
-          />
-          <FeatureCard
-            title="Matchdays"
-            text="Recurring matchups create tension, anticipation and reasons to move."
-            image="/logik/spieltag.jpg"
-          />
-          <FeatureCard
-            title="Leagues"
-            text="Promotion, relegation and tables turn consistency into drama."
-            image="/logik/liga.jpg"
-          />
-        </div>
-      </Section>
-
-      <Section
-        eyebrow="Team Impact"
-        title="Movement becomes competition."
-        text="Your progress affects teams, rivalries and league position — bringing the dynamics of games into real life."
+        eyebrow="Matchday Motivation"
+        title="Every player matters."
+        text="Every three days, your team gets a new chance. Your latest activity can influence the next result."
       >
         <MatchdayPanel />
       </Section>
 
       <Section
-        eyebrow="Healthy Development"
-        title="Long-term progress."
-        text="Visible motivation creates short-term excitement. Real movement builds long-term health, fitness and habits."
-      />
+        eyebrow="Status & Rewards"
+        title="Earn your identity."
+        text="Cards, jerseys, sponsors and events make your progress visible — online, offline and in real life."
+      >
+        <RewardsGrid />
+      </Section>
+
+      <section className="border-t border-black/10 bg-[#f7f7f2]">
+        <div className="mx-auto max-w-7xl px-6 py-16 md:py-24">
+          <div className="grid gap-6 md:grid-cols-2">
+            <div className="rounded-3xl border border-black/10 bg-white p-8 md:p-10">
+              <Eyebrow>Play2Win</Eyebrow>
+              <h2 className="mt-4 text-4xl font-semibold leading-[1.04] tracking-tight md:text-6xl">
+                No shortcuts. No Pay2Win.
+              </h2>
+              <p className="mt-6 text-lg leading-relaxed text-black/65">
+                Success is earned through movement, consistency and real activity.
+              </p>
+            </div>
+
+            <div className="rounded-3xl border border-black/10 bg-white p-8 md:p-10">
+              <Eyebrow>Real Life</Eyebrow>
+              <h2 className="mt-4 text-4xl font-semibold leading-[1.04] tracking-tight md:text-6xl">
+                The app is not the goal.
+              </h2>
+              <p className="mt-6 text-lg leading-relaxed text-black/65">
+                IY is built to motivate real movement, real confidence and real development.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <CTASection />
     </main>
