@@ -353,7 +353,7 @@ export default function PartnersPage() {
           <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#f7f7f2] to-transparent" />
         </div>
 
-        <div className="relative mx-auto flex min-h-[78vh] max-w-7xl items-center px-6 py-20">
+        <div className="relative mx-auto flex min-h-[78vh] max-w-7xl items-start px-6 pb-20 pt-12 md:items-center md:py-20">
           <div className="max-w-3xl">
             <p className="mb-5 text-xs font-semibold uppercase tracking-[0.22em] text-black/55">
               Partner Ecosystem
