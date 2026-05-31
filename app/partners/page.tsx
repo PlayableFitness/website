@@ -96,51 +96,89 @@ function ValueStrip() {
     </div>
   );
 }
-
 function SupportedBySection() {
+  const partners = [
+    {
+      name: "Alexander Busse",
+      role: "3-time Kickboxing World Champion",
+      image: "/partners/alexander-busse.jpg",
+      text: "Alexander Busse brings martial arts, discipline and community into IY. As a world champion and coach, he helps people experience confidence, progress and real movement through combat sports.",
+      tags: ["Athlete", "Coach", "Community"],
+      active: true,
+    },
+    {
+      name: "Coming Soon",
+      role: "Athlete Partner",
+      image: null,
+      text: "New athletes and coaches will bring their sports, programs and communities into the IY system.",
+      tags: ["Programs", "Challenges", "Teams"],
+      active: false,
+    },
+    {
+      name: "Coming Soon",
+      role: "Creator Partner",
+      image: null,
+      text: "Creators will activate communities through training, lifestyle, nutrition and real-world challenges.",
+      tags: ["Creator", "Community", "Events"],
+      active: false,
+    },
+  ];
+
   return (
     <Section
       eyebrow="Supported by"
       title="Athletes who turn movement into identity."
       text="IY grows with real athletes, coaches and creators who bring credibility, community and programs into the system."
     >
-      <div className="grid gap-6 overflow-hidden rounded-3xl border border-black/10 bg-white md:grid-cols-[0.9fr_1.1fr]">
-        <div className="relative min-h-[420px] bg-black">
-          <img
-            src="/partners/alexander-busse.jpg"
-            alt="Alexander Busse"
-            className="absolute inset-0 h-full w-full object-cover object-center opacity-90"
-          />
-        </div>
+      <div className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory">
+        {partners.map((partner) => (
+          <div
+            key={partner.name + partner.role}
+            className="min-w-[82%] snap-start overflow-hidden rounded-3xl border border-black/10 bg-white shadow-sm md:min-w-[520px]"
+          >
+            <div className="relative h-[340px] bg-black">
+              {partner.image ? (
+                <img
+                  src={partner.image}
+                  alt={partner.name}
+                  className="absolute inset-0 h-full w-full object-cover object-center opacity-90"
+                />
+              ) : (
+                <div className="absolute inset-0 flex items-center justify-center bg-black">
+                  <p className="text-3xl font-semibold text-white/35">
+                    Coming Soon
+                  </p>
+                </div>
+              )}
+            </div>
 
-        <div className="p-8 md:p-10">
-          <Eyebrow>Founding Athlete Partner</Eyebrow>
-          <h3 className="mt-4 text-4xl font-semibold leading-tight text-black md:text-5xl">
-            Alexander Busse
-          </h3>
-          <p className="mt-3 text-lg font-medium text-black/70">
-            3-time Kickboxing World Champion
-          </p>
+            <div className="p-7">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-black/40">
+                {partner.active ? "Founding Partner" : "Next Partners"}
+              </p>
+              <h3 className="mt-3 text-3xl font-semibold leading-tight text-black">
+                {partner.name}
+              </h3>
+              <p className="mt-2 text-base font-medium text-black/65">
+                {partner.role}
+              </p>
+              <p className="mt-5 text-sm leading-relaxed text-black/65">
+                {partner.text}
+              </p>
 
-          <p className="mt-6 text-black/65 leading-relaxed">
-            Alexander Busse started martial arts at a young age and built his career through discipline,
-            confidence and consistency. After titles across multiple disciplines, he became a 3-time world
-            champion, multiple German champion, European champion and coach.
-          </p>
-
-          <p className="mt-4 text-black/65 leading-relaxed">
-            With Team BUSSE, he now helps people experience the positive impact of martial arts through
-            training, competition and community.
-          </p>
-
-          <div className="mt-8 grid gap-4 sm:grid-cols-3">
-            {["Athlete", "Coach", "Community"].map((item) => (
-              <div key={item} className="rounded-2xl bg-[#f7f7f2] p-4">
-                <p className="text-sm font-semibold text-black">{item}</p>
+              <div className="mt-6 flex flex-wrap gap-2">
+                {partner.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-xl bg-[#f7f7f2] px-3 py-2 text-xs font-semibold text-black/70"
+                  >
+                    {tag}
+                  </span>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
-        </div>
+        ))}
       </div>
     </Section>
   );
