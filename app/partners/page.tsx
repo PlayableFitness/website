@@ -19,9 +19,22 @@ function Navbar() {
           </Link>
         </nav>
 
-        <Link href="/players" className="rounded-xl bg-[#00D1B2] px-5 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-black">
-          Create Player
-        </Link>
+        <details className="relative md:hidden">
+          <summary className="list-none rounded-xl border border-black/10 bg-white/70 px-4 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-black cursor-pointer">
+            Menu
+          </summary>
+          <div className="absolute right-0 mt-3 w-48 overflow-hidden rounded-2xl border border-black/10 bg-white shadow-xl shadow-black/10">
+            <Link href="/" className="block px-5 py-4 text-sm font-semibold text-black">
+              Home
+            </Link>
+            <Link href="/players" className="block border-t border-black/10 px-5 py-4 text-sm font-semibold text-black">
+              Players
+            </Link>
+            <Link href="/partners" className="block border-t border-black/10 px-5 py-4 text-sm font-semibold text-black">
+              Partners
+            </Link>
+          </div>
+        </details>
       </div>
     </header>
   );
