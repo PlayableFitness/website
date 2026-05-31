@@ -1,30 +1,74 @@
 import Link from "next/link";
 
 function Navbar() {
+  const activeClass =
+    "text-black underline decoration-[#00D1B2] decoration-2 underline-offset-8";
+
   return (
     <header className="sticky top-0 z-50 border-b border-black/10 bg-[#f7f7f2]/85 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+        
         <Link href="/" className="flex items-center gap-3">
-          <img src="/logo/IY Logo.png" alt="IY Logo" className="h-10 w-10 rounded-xl object-cover" />
+          <img
+            src="/logo/IY Logo.png"
+            alt="IY Logo"
+            className="h-9 w-9 rounded-xl object-cover"
+          />
+
           <div className="text-xs font-semibold uppercase tracking-[0.28em] text-black/55">
             Improve Yourself
           </div>
         </Link>
 
-        <nav className="hidden items-center gap-8 text-xs font-semibold uppercase tracking-[0.12em] text-black/65 md:flex">
-          <Link href="/">Home</Link>
-          <Link href="/players" className="text-black underline decoration-[#00D1B2] decoration-2 underline-offset-8">
+        <nav className="hidden md:flex items-center gap-8 text-xs font-semibold uppercase tracking-[0.12em] text-black/65">
+          
+          <Link href="/" className="transition hover:text-black">
+            Home
+          </Link>
+
+          <Link
+            href="/players"
+            className={`${activeClass} transition hover:text-black`}
+          >
             Players
           </Link>
-          <Link href="/partners">Partners</Link>
+
+          <Link href="/partners" className="transition hover:text-black">
+            Partners
+          </Link>
+
         </nav>
 
-        <Link
-          href="/partners"
-          className="rounded-xl bg-[#00D1B2] px-5 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-black transition hover:scale-[1.02]"
-        >
-          Partners
-        </Link>
+        <details className="relative md:hidden">
+          <summary className="list-none rounded-xl border border-black/10 bg-white/70 px-4 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-black cursor-pointer transition hover:bg-white">
+            Menu
+          </summary>
+
+          <div className="absolute right-0 mt-3 w-52 overflow-hidden rounded-2xl border border-black/10 bg-white shadow-xl shadow-black/10">
+            
+            <Link
+              href="/"
+              className="block px-5 py-4 text-sm font-semibold text-black transition hover:bg-black/[0.03]"
+            >
+              Home
+            </Link>
+
+            <Link
+              href="/players"
+              className="block border-t border-black/10 px-5 py-4 text-sm font-semibold text-[#00D1B2] transition hover:bg-black/[0.03]"
+            >
+              Players
+            </Link>
+
+            <Link
+              href="/partners"
+              className="block border-t border-black/10 px-5 py-4 text-sm font-semibold text-black transition hover:bg-black/[0.03]"
+            >
+              Partners
+            </Link>
+
+          </div>
+        </details>
       </div>
     </header>
   );
