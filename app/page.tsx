@@ -1,159 +1,71 @@
-"use client";
-
 import Link from "next/link";
-import { useRef, useState } from "react";
+
+const playerCardPool = [
+  "/cards/PlayerCard01.png",
+  "/cards/PlayerCard02.png",
+  "/cards/PlayerCard03.png",
+  "/cards/PlayerCard04.png",
+  "/cards/PlayerCard05.png",
+  "/cards/PlayerCard06.png",
+  "/cards/PlayerCard07.png",
+  "/cards/PlayerCard08.png",
+  "/cards/PlayerCard09.png",
+  "/cards/PlayerCard10.png",
+];
+
+function getHeroCards() {
+  return [...playerCardPool].sort(() => Math.random() - 0.5).slice(0, 4);
+}
 
 function Navbar() {
   const activeClass =
     "text-black underline decoration-[#00D1B2] decoration-2 underline-offset-8";
 
   return (
-    <header className="sticky top-0 z-50 border-b border-black/10 bg-[#f7f7f2]/85 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-black/10 bg-white">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        
         <Link href="/" className="flex items-center gap-3">
           <img
             src="/logo/IY Logo.png"
             alt="IY Logo"
             className="h-9 w-9 rounded-xl object-cover"
           />
-
           <div className="text-xs font-semibold uppercase tracking-[0.28em] text-black/55">
             Improve Yourself
           </div>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-8 text-xs font-semibold uppercase tracking-[0.12em] text-black/65">
-          
-          <Link
-            href="/"
-            className={`${activeClass} transition hover:text-black`}
-          >
+        <nav className="hidden items-center gap-8 text-xs font-semibold uppercase tracking-[0.12em] text-black/65 md:flex">
+          <Link href="/" className={`${activeClass} transition hover:text-black`}>
             Home
           </Link>
-
           <Link href="/players" className="transition hover:text-black">
-            Players
+            Player
           </Link>
-
           <Link href="/partners" className="transition hover:text-black">
-            Partners
+            Partner
           </Link>
-
         </nav>
 
         <details className="relative md:hidden">
-          <summary className="list-none rounded-xl border border-black/10 bg-white/70 px-4 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-black cursor-pointer transition hover:bg-white">
+          <summary className="list-none cursor-pointer rounded-xl border border-black/10 bg-white px-4 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-black">
             Menu
           </summary>
 
           <div className="absolute right-0 mt-3 w-52 overflow-hidden rounded-2xl border border-black/10 bg-white shadow-xl shadow-black/10">
-            
-            <Link
-              href="/"
-              className="block px-5 py-4 text-sm font-semibold text-[#00D1B2] transition hover:bg-black/[0.03]"
-            >
+            <Link href="/" className="block px-5 py-4 text-sm font-semibold text-[#00D1B2]">
               Home
             </Link>
-
-            <Link
-              href="/players"
-              className="block border-t border-black/10 px-5 py-4 text-sm font-semibold text-black transition hover:bg-black/[0.03]"
-            >
-              Players
+            <Link href="/players" className="block border-t border-black/10 px-5 py-4 text-sm font-semibold">
+              Player
             </Link>
-
-            <Link
-              href="/partners"
-              className="block border-t border-black/10 px-5 py-4 text-sm font-semibold text-black transition hover:bg-black/[0.03]"
-            >
-              Partners
+            <Link href="/partners" className="block border-t border-black/10 px-5 py-4 text-sm font-semibold">
+              Partner
             </Link>
-
           </div>
         </details>
       </div>
     </header>
-  );
-}
-
-function PlayerCardStack() {
-  const cards = [
-    { src: "/cards/card_Julia.png", className: "z-30 rotate-0 scale-100" },
-    {
-      src: "/cards/card_Jaydon.png",
-      className:
-        "z-20 -translate-x-16 translate-y-8 -rotate-6 scale-95 opacity-95",
-    },
-    {
-      src: "/cards/card_David.png",
-      className:
-        "z-10 translate-x-16 translate-y-10 rotate-6 scale-95 opacity-95",
-    },
-  ];
-
-  return (
-    <div className="relative mx-auto h-[560px] w-[420px]">
-      {cards.map((card) => (
-        <img
-          key={card.src}
-          src={card.src}
-          alt="IY Player Card"
-          className={`absolute left-1/2 top-0 h-[540px] w-auto -translate-x-1/2 rounded-[2rem] shadow-2xl shadow-black/25 transition duration-500 hover:z-40 hover:-translate-y-4 hover:scale-105 ${card.className}`}
-        />
-      ))}
-    </div>
-  );
-}
-
-function MobilePlayerCardStack() {
-  const cards = [
-    "/cards/card_Julia.png",
-    "/cards/card_Jaydon.png",
-    "/cards/card_David.png",
-    "/cards/card_Felix.png",
-    "/cards/card_Lena.png",
-  ];
-
-  const [index, setIndex] = useState(0);
-  const startX = useRef<number | null>(null);
-
-  const nextCard = () => setIndex((prev) => prev + 1);
-
-  const visibleCards = [
-    cards[index % cards.length],
-    cards[(index + 1) % cards.length],
-    cards[(index + 2) % cards.length],
-  ];
-
-  return (
-    <div className="relative mx-auto mt-12 h-[390px] w-[270px] md:hidden">
-      {visibleCards.map((src, i) => (
-        <img
-          key={`${src}-${index}-${i}`}
-          src={src}
-          alt="IY Player Card"
-          onPointerDown={(e) => {
-            if (i === 0) startX.current = e.clientX;
-          }}
-          onPointerUp={(e) => {
-            if (i !== 0 || startX.current === null) return;
-            if (Math.abs(e.clientX - startX.current) > 70) nextCard();
-            startX.current = null;
-          }}
-          onClick={() => {
-            if (i === 0) nextCard();
-          }}
-          className={`absolute inset-0 h-[360px] w-full rounded-[1.7rem] object-cover shadow-2xl shadow-black/25 transition duration-300 ${
-            i === 0
-              ? "z-30 cursor-pointer active:scale-95"
-              : i === 1
-              ? "z-20 translate-y-5 -rotate-6 scale-95 opacity-90"
-              : "z-10 translate-y-10 rotate-6 scale-90 opacity-75"
-          }`}
-        />
-      ))}
-    </div>
   );
 }
 
@@ -190,267 +102,366 @@ function Section({
             </p>
           )}
         </div>
+
         {children && <div className="mt-12">{children}</div>}
       </div>
     </section>
   );
 }
 
-function CoreMechanicSection() {
-  const items = [
-    {
-      label: "Move",
-      title: "Real activity improves your player.",
-      text: "Runs, workouts, consistency and recovery shape your skills, form and overall rating.",
-    },
-    {
-      label: "Compete",
-      title: "Every workout can decide matchday.",
-      text: "Teams compete in leagues, rivalries and seasons powered by real-world movement.",
-    },
-    {
-      label: "Progress",
-      title: "Build status through movement.",
-      text: "Unlock special cards, sponsors, jerseys and rewards as your player grows.",
-    },
+function HeroCardShowcase() {
+  const cards = getHeroCards();
+
+  const positions = [
+    "left-0 top-20 z-10 w-[52%] -rotate-7 opacity-95",
+    "left-[15%] top-10 z-20 w-[54%] -rotate-3 opacity-95",
+    "right-[14%] top-12 z-30 w-[54%] rotate-3 opacity-95",
+    "right-0 top-5 z-40 w-[56%] rotate-7 opacity-100",
   ];
 
   return (
-    <section className="relative z-10 mx-auto -mt-10 max-w-7xl px-6">
-      <div className="grid overflow-hidden rounded-3xl border border-black/10 bg-white/90 shadow-xl shadow-black/5 backdrop-blur-xl md:grid-cols-3">
-        {items.map((item) => (
-          <div
-            key={item.label}
-            className="border-black/10 p-7 md:border-r last:md:border-r-0"
-          >
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-black/40">
-              {item.label}
-            </p>
-            <h3 className="mt-4 text-2xl font-semibold leading-tight text-black">
-              {item.title}
-            </h3>
-            <p className="mt-4 text-sm leading-relaxed text-black/60">
-              {item.text}
-            </p>
-          </div>
-        ))}
-      </div>
-    </section>
+    <div className="relative mx-auto hidden h-[560px] w-full max-w-[680px] md:block">
+      {cards.map((src, index) => (
+        <img
+          key={src}
+          src={src}
+          alt="IY Player Card"
+          className={`absolute rounded-[2rem] shadow-2xl shadow-black/20 transition duration-500 hover:z-50 hover:-translate-y-4 hover:scale-105 ${positions[index]}`}
+        />
+      ))}
+    </div>
   );
 }
 
-function PlayerIdentitySection() {
+function ValueStrip() {
+  const items = [
+    ["Move", "Echte Aktivität wird zur Grundlage deiner Identität."],
+    ["Play", "Teams, Matchdays und Seasons machen Bewegung zum Spiel."],
+    ["Progress", "Dein Spieler, deine Card und dein Status entwickeln sich mit dir."],
+  ];
+
+  return (
+    <div className="relative z-10 mx-auto -mt-10 max-w-7xl px-6">
+      <div className="grid overflow-hidden rounded-3xl border border-black/10 bg-white shadow-xl shadow-black/5 md:grid-cols-3">
+        {items.map(([title, text]) => (
+          <div
+            key={title}
+            className="border-black/10 p-7 md:border-r last:md:border-r-0"
+          >
+            <h3 className="text-3xl font-semibold text-black">{title}</h3>
+            <p className="mt-3 text-sm leading-relaxed text-black/60">
+              {text}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function IdentityPanel() {
+  return (
+    <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+      <div className="rounded-3xl border border-black/10 bg-white p-8 shadow-sm md:p-10">
+        <Eyebrow>Real Movement</Eyebrow>
+        <h3 className="mt-4 text-4xl font-semibold leading-[1.04] tracking-tight text-black md:text-5xl">
+          Bewegung wird sichtbar.
+        </h3>
+        <p className="mt-6 text-lg leading-relaxed text-black/65">
+          Jeder Schritt, jedes Training und jede Entscheidung formt deinen
+          Spieler — und macht deine Entwicklung sichtbar.
+        </p>
+      </div>
+
+      <div className="mx-auto w-full max-w-[430px]">
+        <img
+          src="/cards/PlayerCard01.png"
+          alt="IY Player Card"
+          className="w-full rounded-[2rem] shadow-2xl shadow-black/20"
+        />
+      </div>
+    </div>
+  );
+}
+
+function ProgressionPanel() {
   const stages = [
+    ["Rookie", "", "/cards/Card_Rookie.png"],
+    ["Starter", "", "/cards/Card_Starter.png"],
+    ["Elite", "", "/cards/Card_Elite.png"],
+    ["Pro", "", "/cards/Card_Pro.png"],
+  ];
+
+  return (
+    <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+      {stages.map(([level, ovr, image]) => (
+        <div
+          key={level}
+          className="group rounded-3xl border border-black/10 bg-white p-4 shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-black/10"
+        >
+          <div className="overflow-hidden rounded-[1.8rem] bg-[#ecece5]">
+            <img
+              src={image}
+              alt={`${level} Player Card`}
+              className="w-full transition duration-700 group-hover:scale-[1.03]"
+            />
+          </div>
+
+          <div className="flex items-center justify-between gap-4 px-2 pb-3 pt-5">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-black/40">
+                {level}
+              </p>
+              <h3 className="mt-1 text-2xl font-semibold text-black">
+                {ovr}
+              </h3>
+            </div>
+
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function PartnershipsPanel() {
+  const items = [
     [
-      "Level 01",
-      "Rookie",
-      "42 OVR",
-      "Every player starts somewhere. Small activities create visible progress from day one.",
-      "/players/stufe1.jpg",
+      "Bewusst wählen",
+      "Spieler entscheiden, welche Partner zu ihrer Identität und Einstellung passen.",
     ],
     [
-      "Level 02",
-      "Starter",
-      "58 OVR",
-      "Consistency builds form, confidence and a player identity you can see.",
-      "/players/stufe2.jpg",
+      "Mit Stolz tragen",
+      "Kooperationen werden Teil des Looks, der Card und der persönlichen Geschichte.",
     ],
     [
-      "Level 03",
-      "Elite",
-      "74 OVR",
-      "Better skills unlock more status, stronger teams and new opportunities.",
-      "/players/stufe3.jpg",
+      "Mehr als Logos",
+      "Partner bringen Challenges, Produkte, Events, Communities und Erlebnisse ein.",
     ],
     [
-      "Level 04",
-      "Pro",
-      "91 OVR",
-      "Top players earn visibility, special cards and premium brand unlocks.",
-      "/players/stufe4.jpg",
+      "Teil des Systems",
+      "Partner gestalten das Ökosystem mit — nicht nur Kampagnen.",
     ],
   ];
 
   return (
-    <Section
-      eyebrow="Player Identity"
-      title="Not your favorite player. You."
-      text="Your movement builds your player, your stats, your status and your story."
-    >
-      <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-        {stages.map(([stage, title, rating, text, image]) => (
-          <div
-            key={title}
-            className="group overflow-hidden rounded-3xl border border-black/10 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-black/10"
-          >
-            <div className="relative aspect-[9/16] overflow-hidden bg-[#ecece5]">
-              <img
-                src={image}
-                alt={title}
-                className="h-full w-full object-cover object-[center_30%] transition duration-700 group-hover:scale-105"
-              />
-              <div className="absolute left-4 top-4 rounded-xl bg-[#00D1B2] px-3 py-2 text-xs font-bold text-black">
-                {rating}
-              </div>
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent p-5">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/55">
-                  {stage}
-                </p>
-                <h3 className="mt-2 text-3xl font-semibold text-white">
-                  {title}
-                </h3>
-              </div>
-            </div>
-            <div className="p-6">
-              <p className="text-sm leading-relaxed text-black/65">{text}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </Section>
+    <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+      {items.map(([title, text]) => (
+        <div
+          key={title}
+          className="rounded-3xl border border-black/10 bg-white p-8 shadow-sm"
+        >
+          <h3 className="text-2xl font-semibold text-black">{title}</h3>
+          <p className="mt-4 text-sm leading-relaxed text-black/65">{text}</p>
+        </div>
+      ))}
+    </div>
   );
 }
 
 function MatchdaySection() {
+  const table = [
+    ["1", "LA United", "24", "16", "5", "3", "+28", "53"],
+    ["2", "Munich City", "24", "15", "4", "5", "+21", "49"],
+    ["3", "Berlin Ballers", "24", "13", "5", "6", "+15", "44"],
+    ["4", "Urban Runners", "24", "12", "4", "8", "+9", "40"],
+  ];
+
   return (
-    <Section
-      eyebrow="Teams & Matchdays"
-      title="Every player matters."
-      text="Your next workout could decide the next matchday."
-    >
-      <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-        <div className="relative overflow-hidden rounded-3xl border border-black/10 bg-white p-8 md:p-10">
-          <img
-            src="/logik/team.jpg"
-            alt="Team"
-            className="absolute inset-0 h-full w-full object-cover opacity-20"
-          />
-          <div className="relative">
-            <Eyebrow>Matchday 07</Eyebrow>
-            <h3 className="mt-4 text-4xl font-semibold leading-none tracking-tight text-black md:text-5xl">
-              LA United
-              <br />
-              vs
-              <br />
-              Berlin Ballers
-            </h3>
+    <section className="border-t border-black/10 bg-[#f7f7f2]">
+      <div className="mx-auto max-w-7xl px-6 py-16 md:py-24">
+        <div className="mx-auto max-w-3xl text-center">
+          <Eyebrow>Competition</Eyebrow>
+          <h2 className="mt-4 text-4xl font-semibold leading-[1.02] tracking-tight text-black md:text-6xl">
+            Every player matters.
+          </h2>
+        </div>
 
-            <div className="mt-6 rounded-2xl bg-black p-5 text-white">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/45">
-                Last match
-              </p>
+        <div className="mt-12 overflow-hidden rounded-[2rem] border border-white/10 bg-[radial-gradient(circle_at_top,#203f3a_0%,#07110f_46%,#020403_100%)] p-6 text-white shadow-2xl shadow-black/25 md:p-10">
+          <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+            <div className="rounded-3xl border border-white/10 bg-white/[0.06] p-6 backdrop-blur md:p-8">
+              <div className="flex items-center justify-between gap-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#00D1B2]">
+                  Matchday 07
+                </p>
+                <span className="rounded-full border border-white/10 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-white/60">
+                  Every 3 days
+                </span>
+              </div>
 
-              <div className="mt-4 flex items-center justify-between gap-4">
+              <div className="mt-8 grid grid-cols-[1fr_auto_1fr] items-center gap-4">
                 <div>
-                  <p className="text-sm font-semibold uppercase text-white/55">
-                    LA United
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/40">
+                    Home
                   </p>
-                  <p className="mt-1 text-sm font-semibold uppercase text-white/55">
-                    Berlin Ballers
+                  <h3 className="mt-2 text-4xl font-semibold leading-none md:text-5xl">
+                    LA
+                    <br />
+                    United
+                  </h3>
+                  <p className="mt-4 text-xs font-semibold uppercase tracking-[0.14em] text-[#00D1B2]">
+                    Team OVR 82
                   </p>
+                </div>
+
+                <div className="text-center">
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/35">
+                    Final
+                  </p>
+                  <div className="mt-3 rounded-3xl bg-black/55 px-6 py-5">
+                    <p className="text-6xl font-semibold leading-none">
+                      2<span className="text-white/25">:</span>1
+                    </p>
+                  </div>
                 </div>
 
                 <div className="text-right">
-                  <p className="text-4xl font-semibold leading-none text-[#00D1B2]">
-                    3
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/40">
+                    Away
                   </p>
-                  <p className="mt-1 text-4xl font-semibold leading-none text-white">
-                    1
+                  <h3 className="mt-2 text-4xl font-semibold leading-none md:text-5xl">
+                    Berlin
+                    <br />
+                    Ballers
+                  </h3>
+                  <p className="mt-4 text-xs font-semibold uppercase tracking-[0.14em] text-white/45">
+                    Team OVR 79
                   </p>
                 </div>
               </div>
+
+              <p className="mt-8 max-w-xl text-lg leading-relaxed text-white/65">
+                Deine Aktivität entscheidet nicht nur über deinen Fortschritt —
+                sondern auch über den Erfolg deines Teams.
+              </p>
             </div>
 
-            <div className="mt-4 grid gap-4 sm:grid-cols-2">
-              <div className="rounded-2xl bg-black p-5 text-white">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/45">
-                  Team Power
+            <div className="grid gap-6">
+              <div className="rounded-3xl border border-[#00D1B2]/25 bg-[#00D1B2]/10 p-6">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#00D1B2]">
+                  Player of the Match
                 </p>
-                <p className="mt-2 text-5xl font-semibold text-[#00D1B2]">
-                  78
-                </p>
+
+                <div className="mt-5 grid grid-cols-[0.45fr_1fr] items-center gap-5">
+                  <img
+                    src="/cards/Card_Elite.png"
+                    alt="Player of the Match"
+                    className="w-full rounded-2xl shadow-xl shadow-black/25"
+                  />
+
+                  <div>
+                    <h4 className="text-3xl font-semibold leading-none">
+                      Max
+                    </h4>
+                    <p className="mt-3 text-sm font-semibold uppercase tracking-[0.14em] text-white/45">
+                      +18 Team Impact
+                    </p>
+                    <p className="mt-4 text-sm leading-relaxed text-white/65">
+                      Höchste Aktivität seit dem letzten Matchday.
+                    </p>
+                  </div>
+                </div>
               </div>
 
-              <div className="rounded-2xl border border-black/10 bg-white/80 p-5">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-black/45">
-                  Weekly Form
+              <div className="rounded-3xl border border-white/10 bg-white/[0.06] p-6">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/40">
+                  League Table
                 </p>
-                <p className="mt-2 text-5xl font-semibold text-black">+12%</p>
+
+                <div className="mt-5 grid grid-cols-[28px_1fr_34px_28px_28px_28px_42px_34px] gap-2 px-4 text-[10px] font-semibold uppercase tracking-[0.14em] text-white/35">
+                  <span>#</span>
+                  <span>Club</span>
+                  <span>Sp</span>
+                  <span>S</span>
+                  <span>U</span>
+                  <span>N</span>
+                  <span>TD</span>
+                  <span>Pkt</span>
+                </div>
+
+                <div className="mt-3 space-y-3">
+                  {table.map(([rank, team, sp, s, u, n, td, pts]) => (
+                    <div
+                      key={team}
+                      className="grid grid-cols-[28px_1fr_34px_28px_28px_28px_42px_34px] items-center gap-2 rounded-2xl bg-black/25 px-4 py-3 text-sm"
+                    >
+                      <span className="text-white/35">#{rank}</span>
+                      <span className="font-semibold">{team}</span>
+                      <span className="text-white/45">{sp}</span>
+                      <span className="text-white/45">{s}</span>
+                      <span className="text-white/45">{u}</span>
+                      <span className="text-white/45">{n}</span>
+                      <span className="text-[#00D1B2]">{td}</span>
+                      <span className="font-semibold">{pts}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-
-        <div className="rounded-3xl border border-black/10 bg-white p-8 md:p-10">
-          <Eyebrow>League Table</Eyebrow>
-
-          <div className="mt-6 overflow-hidden rounded-2xl border border-black/10">
-            <div className="grid grid-cols-[0.5fr_1.8fr_0.6fr_0.6fr_0.6fr_0.6fr_0.8fr_0.8fr] bg-black px-3 py-3 text-[10px] font-semibold uppercase tracking-[0.12em] text-white/55">
-              <span>#</span>
-              <span>Team</span>
-              <span className="text-center">P</span>
-              <span className="text-center">W</span>
-              <span className="text-center">D</span>
-              <span className="text-center">L</span>
-              <span className="text-center">GD</span>
-              <span className="text-center">OVR</span>
-            </div>
-
-            {[
-              ["1", "North Squad", "6", "5", "1", "0", "+18", "82"],
-              ["2", "LA United", "6", "4", "1", "1", "+11", "78"],
-              ["3", "Berlin Ballers", "6", "3", "1", "2", "+7", "74"],
-              ["4", "Urban Runners", "6", "2", "0", "4", "-6", "69"],
-            ].map(([rank, team, played, won, draw, lost, gd, ovr]) => (
-              <div
-                key={team}
-                className="grid grid-cols-[0.5fr_1.8fr_0.6fr_0.6fr_0.6fr_0.6fr_0.8fr_0.8fr] items-center border-t border-black/10 bg-[#f7f7f2] px-3 py-4 text-sm"
-              >
-                <span className="font-semibold text-black/45">#{rank}</span>
-                <span className="font-semibold text-black">{team}</span>
-                <span className="text-center font-medium text-black/60">
-                  {played}
-                </span>
-                <span className="text-center font-medium text-black/60">
-                  {won}
-                </span>
-                <span className="text-center font-medium text-black/60">
-                  {draw}
-                </span>
-                <span className="text-center font-medium text-black/60">
-                  {lost}
-                </span>
-                <span className="text-center font-semibold text-black">
-                  {gd}
-                </span>
-                <span className="mx-auto rounded-xl bg-[#00D1B2] px-3 py-2 text-xs font-semibold text-black">
-                  {ovr}
-                </span>
-              </div>
-            ))}
           </div>
         </div>
       </div>
-    </Section>
+    </section>
   );
 }
 
-function Play2WinSection() {
+function MovementImpactSection() {
+  const metrics = [
+    ["18.482", "Players representing a partner"],
+    ["421.800 km", "Movement generated"],
+    ["58.320", "Completed workouts"],
+    ["3.210", "Player Cards shared"],
+  ];
+
   return (
-    <section className="border-t border-black/10 bg-black text-white">
-      <div className="mx-auto max-w-7xl px-6 py-20 md:py-28">
-        <div className="mx-auto max-w-4xl text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/40">
-            Fair Competition
-          </p>
-          <h2 className="mt-5 text-5xl font-semibold leading-[1] tracking-tight md:text-7xl">
-            No Pay2Win.
+    <section className="border-t border-black/10 bg-[#f7f7f2]">
+      <div className="mx-auto grid max-w-7xl gap-8 px-6 py-16 md:py-24 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
+        <div>
+          <Eyebrow>Movement Impact</Eyebrow>
+          <h2 className="mt-4 text-4xl font-semibold leading-[1.02] tracking-tight text-black md:text-6xl">
+            Create movement.
             <br />
-            <span className="text-[#00D1B2]">Play2Win.</span>
+            Build identity.
+            <br />
+            Measure impact.
           </h2>
-          <p className="mx-auto mt-7 max-w-2xl text-lg leading-relaxed text-white/65">
-            Success is earned through real movement — not money, ads or endless
-            screen time.
+          <p className="mt-6 text-lg leading-relaxed text-black/65">
+            IY misst nicht nur Aufmerksamkeit. IY zeigt, welche echte Bewegung,
+            Community und positiven Geschichten durch Kooperationen entstehen.
+          </p>
+        </div>
+
+        <div className="rounded-[2rem] border border-black/10 bg-white p-6 shadow-2xl shadow-black/10 md:p-8">
+          <div className="flex items-center justify-between gap-4 border-b border-black/10 pb-5">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-black/40">
+                Movement Impact Report
+              </p>
+              <h3 className="mt-2 text-3xl font-semibold text-black">
+                Your Impact
+              </h3>
+            </div>
+            <span className="rounded-xl bg-[#00D1B2] px-4 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-black">
+              Preview
+            </span>
+          </div>
+
+          <div className="mt-6 grid gap-4 md:grid-cols-2">
+            {metrics.map(([value, label]) => (
+              <div key={label} className="rounded-2xl bg-[#f7f7f2] p-5">
+                <p className="text-3xl font-semibold leading-none text-black">
+                  {value}
+                </p>
+                <p className="mt-3 text-xs font-semibold uppercase tracking-[0.14em] text-black/40">
+                  {label}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <p className="mt-6 rounded-2xl bg-black p-5 text-sm leading-relaxed text-white/70">
+            This month your partnership inspired thousands of people to move,
+            compete and represent your identity.
           </p>
         </div>
       </div>
@@ -458,102 +469,64 @@ function Play2WinSection() {
   );
 }
 
-function RewardsSection() {
-  const rewards = [
-    {
-      title: "Special Cards",
-      text: "Player of the Matchday, Player of the Season and rare achievement cards make progress visible.",
-    },
-    {
-      title: "Jerseys & Sponsors",
-      text: "Unlock teamwear, outfitters and sponsors that represent your identity and status.",
-    },
-    {
-      title: "Creator Programs",
-      text: "Train with athletes, creators and communities through challenges, programs and events.",
-    },
+function EcosystemSection() {
+  const items = [
+    ["Players", "Identität durch Bewegung."],
+    ["Partners", "Kooperationen mit Bedeutung."],
+    ["Teams", "Gemeinschaft und Wettbewerb."],
+    ["Matchdays", "Alle drei Tage zählt Aktivität."],
+    ["Creators", "Programme, Challenges und Communities."],
+    ["Movement Impact", "Positive Aktivierung messbar machen."],
   ];
 
   return (
     <Section
-      eyebrow="Rewards & Identity"
-      title="Earn your identity."
-      text="Brands, creators and athletes become part of the sport system — not interruptions."
+      eyebrow="Ecosystem"
+      title="One ecosystem. Endless possibilities."
     >
-      <div className="grid gap-6 md:grid-cols-3">
-        {rewards.map((item) => (
+      <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+        {items.map(([title, text]) => (
           <div
-            key={item.title}
-            className="rounded-3xl border border-black/10 bg-white p-8 shadow-sm"
+            key={title}
+            className="rounded-3xl border border-black/10 bg-white p-7 shadow-sm"
           >
-            <h3 className="text-2xl font-semibold text-black">{item.title}</h3>
+            <h3 className="text-2xl font-semibold text-black">{title}</h3>
             <p className="mt-4 text-sm leading-relaxed text-black/65">
-              {item.text}
+              {text}
             </p>
           </div>
         ))}
       </div>
     </Section>
-  );
-}
-
-function VisionSection() {
-  return (
-    <section className="border-t border-black/10 bg-[#f7f7f2]">
-      <div className="mx-auto grid max-w-7xl gap-8 px-6 py-16 md:grid-cols-2 md:py-24">
-        <div className="rounded-3xl border border-black/10 bg-white p-8 md:p-10">
-          <Eyebrow>The Vision</Eyebrow>
-          <h2 className="mt-4 text-4xl font-semibold leading-[1.04] tracking-tight md:text-6xl">
-            A new category between sport, gaming and real life.
-          </h2>
-        </div>
-
-        <div className="relative overflow-hidden rounded-3xl border border-black/10 bg-white p-8 md:p-10">
-          <img
-            src="/vision/vision_05.jpg"
-            alt="IY Vision"
-            className="absolute inset-0 h-full w-full object-cover object-[center_25%] opacity-30"
-          />
-          <div className="relative">
-            <p className="text-lg leading-relaxed text-black/70">
-              IY transforms real movement into a competitive sports system
-              powered by identity, teams, matchdays, creators and brands.
-            </p>
-            <p className="mt-6 text-lg leading-relaxed text-black/70">
-              The app is not the goal. Real life is the game.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
   );
 }
 
 function CTASection() {
   return (
     <section className="bg-[#f7f7f2] px-6 pb-16 md:pb-24">
-      <div className="mx-auto rounded-3xl border border-black/10 bg-white p-8 text-center shadow-sm md:p-14 max-w-7xl">
-        <Eyebrow>Season Zero</Eyebrow>
+      <div className="mx-auto max-w-7xl rounded-3xl border border-black/10 bg-black p-8 text-center text-white md:p-14">
+        <Eyebrow>Start</Eyebrow>
         <h2 className="mx-auto mt-4 max-w-3xl text-5xl font-semibold leading-[1] tracking-tight md:text-7xl">
-          Your journey starts now.
+          Train today.
+          <br />
+          Change your player.
         </h2>
-        <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-black/65">
-          Become part of the first generation building a new sports world
-          through real movement.
+        <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/65">
+          Real movement shapes your identity.
         </p>
 
         <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
           <Link
             href="/players"
-            className="inline-flex items-center justify-center rounded-xl bg-[#00D1B2] px-7 py-4 text-xs font-semibold uppercase tracking-[0.14em] text-black transition hover:scale-[1.02]"
+            className="inline-flex items-center justify-center rounded-xl bg-[#00D1B2] px-7 py-4 text-xs font-semibold uppercase tracking-[0.14em] text-black"
           >
             Create Player →
           </Link>
           <Link
             href="/partners"
-            className="inline-flex items-center justify-center rounded-xl border border-black/15 bg-white px-7 py-4 text-xs font-semibold uppercase tracking-[0.14em] text-black transition hover:border-black/30"
+            className="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/10 px-7 py-4 text-xs font-semibold uppercase tracking-[0.14em] text-white"
           >
-            For Brands & Partners →
+            Become a Partner →
           </Link>
         </div>
       </div>
@@ -567,63 +540,77 @@ export default function HomePage() {
       <Navbar />
 
       <section className="relative overflow-hidden bg-[#f7f7f2]">
-        <div className="absolute inset-0">
-          <img
-            src="/header/header_16:9_03.png"
-            alt="IY Movement"
-            className="h-full w-full object-cover object-[75%_25%] opacity-95 md:object-[center_25%]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#f7f7f2]/90 via-[#f7f7f2]/52 to-transparent" />
-          <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#f7f7f2] to-transparent" />
-        </div>
+  <div className="absolute inset-0">
+    <img
+      src="/header/header_16:9_03.png"
+      alt="IY Movement"
+      className="h-full w-full object-cover opacity-95"
+      style={{ objectPosition: "center 35%" }}
+    />
+    <div className="absolute inset-0 bg-gradient-to-r from-[#f7f7f2]/95 via-[#f7f7f2]/72 to-transparent" />
+    <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#f7f7f2] to-transparent" />
+  </div>
 
-        <div className="relative mx-auto grid min-h-[72vh] max-w-7xl items-center gap-10 px-6 py-12 md:min-h-[78vh] md:grid-cols-[1.1fr_0.9fr] md:py-20">
-          <div className="max-w-2xl">
-            <p className="mb-5 text-xs font-semibold uppercase tracking-[0.22em] text-black/55">
-              Real movement powered sport
-            </p>
+  <div className="relative mx-auto grid min-h-[82vh] max-w-7xl items-center gap-12 px-6 py-20 md:grid-cols-[0.9fr_1.1fr]">
+    <div className="max-w-3xl">
+      <p className="mb-6 text-xs font-semibold uppercase tracking-[0.22em] text-black/55">
+        Improve Yourself
+      </p>
 
-            <h1 className="text-6xl font-semibold leading-[0.95] tracking-tight text-black md:text-8xl xl:text-[7.2rem]">
-              You are
-              <br />
-              the player.
-            </h1>
+      <h1 className="text-6xl font-semibold leading-[0.92] tracking-tight text-black md:text-8xl xl:text-[7rem]]">
+        You are
+        <br />
+        the player.
+      </h1>
 
-            <p className="mt-8 max-w-xl text-xl leading-relaxed text-black/75">
-              Daily activity improves your player, strengthens your team and
-              shapes the next matchday.
-            </p>
+      <p className="mt-8 max-w-2xl text-xl leading-relaxed text-black/75 md:text-2xl">
+        Real movement shapes your identity.
+      </p>
 
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
-              <Link
-                href="/players"
-                className="inline-flex items-center justify-center rounded-xl bg-[#00D1B2] px-7 py-4 text-xs font-semibold uppercase tracking-[0.14em] text-black transition hover:scale-[1.02]"
-              >
-                Create Player →
-              </Link>
-              <Link
-                href="/partners"
-                className="inline-flex items-center justify-center rounded-xl border border-black/15 bg-white/70 px-6 py-4 text-xs font-semibold uppercase tracking-[0.14em] text-black transition hover:border-black/30 hover:bg-white"
-              >
-                For Brands & Partners →
-              </Link>
-            </div>
+      <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+        <Link
+          href="/players"
+          className="inline-flex items-center justify-center rounded-xl bg-[#00D1B2] px-7 py-4 text-xs font-semibold uppercase tracking-[0.14em] text-black transition hover:scale-[1.02]"
+        >
+          Create Player →
+        </Link>
 
-            <MobilePlayerCardStack />
-          </div>
+        <Link
+          href="/partners"
+          className="inline-flex items-center justify-center rounded-xl border border-black/15 bg-white px-6 py-4 text-xs font-semibold uppercase tracking-[0.14em] text-black transition hover:border-black/30"
+        >
+          Become a Partner →
+        </Link>
+      </div>
+    </div>
 
-          <div className="hidden justify-end md:flex">
-            <PlayerCardStack />
-          </div>
+          <HeroCardShowcase />
         </div>
       </section>
 
-      <CoreMechanicSection />
-      <PlayerIdentitySection />
+      <ValueStrip />
+
+      <Section eyebrow="Identity" title="Real movement shapes identity.">
+        <IdentityPanel />
+      </Section>
+
+      <Section eyebrow="Progression" title="Every workout changes your player.">
+        <ProgressionPanel />
+      </Section>
+
+      <Section
+        eyebrow="Partnerships"
+        title="Partners become part of your identity."
+      >
+        <PartnershipsPanel />
+      </Section>
+
       <MatchdaySection />
-      <Play2WinSection />
-      <RewardsSection />
-      <VisionSection />
+
+      <MovementImpactSection />
+
+      <EcosystemSection />
+
       <CTASection />
     </main>
   );
