@@ -49,6 +49,32 @@ function Navbar() {
             Partner
           </Link>
         </nav>
+
+        <details className="relative md:hidden">
+          <summary className="list-none cursor-pointer rounded-xl border border-black/10 bg-white px-4 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-black">
+            Menu
+          </summary>
+
+          <div className="absolute right-0 mt-3 w-52 overflow-hidden rounded-2xl border border-black/10 bg-white shadow-xl shadow-black/10">
+            <Link href="/" className="block px-5 py-4 text-sm font-semibold">
+              Home
+            </Link>
+
+            <Link
+              href="/players"
+              className="block border-t border-black/10 px-5 py-4 text-sm font-semibold text-[#00D1B2]"
+            >
+              Player
+            </Link>
+
+            <Link
+              href="/partners"
+              className="block border-t border-black/10 px-5 py-4 text-sm font-semibold"
+            >
+              Partner
+            </Link>
+          </div>
+        </details>
       </div>
     </header>
   );
@@ -119,15 +145,15 @@ function HeroCards() {
 
 function ProgressionCards() {
   const stages = [
-    ["Rookie", "", "/cards/Card_Rookie.png", "Der Anfang jeder Reise."],
-    ["Starter", "", "/cards/Card_Starter.png", "Deine Basis ist gelegt."],
-    ["Elite", "", "/cards/Card_Elite.png", "Du gehörst zu den Besten."],
-    ["Pro", "", "/cards/Card_Pro.png", "Du spielst auf höchstem Niveau."],
+    ["Rookie", "/cards/Card_Rookie.png", "Der Anfang jeder Reise."],
+    ["Starter", "/cards/Card_Starter.png", "Deine Basis ist gelegt."],
+    ["Elite", "/cards/Card_Elite.png", "Du gehörst zu den Besten."],
+    ["Pro", "/cards/Card_Pro.png", "Du spielst auf höchstem Niveau."],
   ];
 
   return (
     <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-      {stages.map(([level, ovr, image, text]) => (
+      {stages.map(([level, image, text]) => (
         <div
           key={level}
           className="group rounded-3xl border border-black/10 bg-white p-4 shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-black/10"
@@ -144,7 +170,6 @@ function ProgressionCards() {
               {level}
             </p>
             <h3 className="mt-1 text-2xl font-semibold text-black">{text}</h3>
-            <p className="mt-3 text-sm font-semibold text-[#00D1B2]">{ovr}</p>
           </div>
         </div>
       ))}
@@ -233,19 +258,25 @@ function MatchdaySection() {
           </p>
         </div>
 
-        <div className="mt-12 overflow-hidden rounded-[2rem] border border-white/10 bg-[radial-gradient(circle_at_top,#203f3a_0%,#07110f_46%,#020403_100%)] p-6 text-white shadow-2xl shadow-black/25 md:p-10">
-          <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-            <div className="rounded-3xl border border-white/10 bg-white/[0.06] p-6 backdrop-blur md:p-8">
-              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#00D1B2]">
-                Matchday 07
-              </p>
+        <div className="mt-12 overflow-hidden rounded-[2rem] border border-white/10 bg-[radial-gradient(circle_at_top,#203f3a_0%,#07110f_46%,#020403_100%)] p-4 text-white shadow-2xl shadow-black/25 sm:p-6 md:p-10">
+          <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:gap-8">
+            <div className="rounded-3xl border border-white/10 bg-white/[0.06] p-5 backdrop-blur sm:p-6 md:p-8">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#00D1B2]">
+                  Matchday 07
+                </p>
 
-              <div className="mt-8 grid grid-cols-[1fr_auto_1fr] items-center gap-4">
+                <span className="w-fit rounded-full border border-white/10 bg-white/10 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-white/60 sm:text-xs">
+                  Every 3 days
+                </span>
+              </div>
+
+              <div className="mt-7 grid grid-cols-1 gap-6 sm:grid-cols-[1fr_auto_1fr] sm:items-center sm:gap-4">
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/40">
                     Home
                   </p>
-                  <h3 className="mt-2 text-4xl font-semibold leading-none md:text-5xl">
+                  <h3 className="mt-2 text-4xl font-semibold leading-none sm:text-3xl md:text-5xl">
                     LA
                     <br />
                     United
@@ -255,22 +286,17 @@ function MatchdaySection() {
                   </p>
                 </div>
 
-                <div className="text-center">
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/35">
-                    Final
+                <div className="w-fit rounded-3xl bg-black/55 px-6 py-5 text-center sm:mx-auto">
+                  <p className="text-5xl font-semibold leading-none sm:text-4xl md:text-6xl">
+                    2<span className="text-white/25">:</span>1
                   </p>
-                  <div className="mt-3 rounded-3xl bg-black/55 px-6 py-5">
-                    <p className="text-6xl font-semibold leading-none">
-                      2<span className="text-white/25">:</span>1
-                    </p>
-                  </div>
                 </div>
 
-                <div className="text-right">
+                <div className="sm:text-right">
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/40">
                     Away
                   </p>
-                  <h3 className="mt-2 text-4xl font-semibold leading-none md:text-5xl">
+                  <h3 className="mt-2 text-4xl font-semibold leading-none sm:text-3xl md:text-5xl">
                     Berlin
                     <br />
                     Ballers
@@ -283,16 +309,16 @@ function MatchdaySection() {
             </div>
 
             <div className="grid gap-6">
-              <div className="rounded-3xl border border-[#00D1B2]/25 bg-[#00D1B2]/10 p-6">
+              <div className="rounded-3xl border border-[#00D1B2]/25 bg-[#00D1B2]/10 p-5 sm:p-6">
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#00D1B2]">
                   Player of the Match
                 </p>
 
-                <div className="mt-5 grid grid-cols-[0.45fr_1fr] items-center gap-5">
+                <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-[120px_1fr] sm:items-center">
                   <img
                     src="/cards/Card_Elite.png"
                     alt="Player of the Match"
-                    className="w-full rounded-2xl shadow-xl shadow-black/25"
+                    className="w-32 rounded-2xl shadow-xl shadow-black/25 sm:w-full"
                   />
 
                   <div>
@@ -307,38 +333,40 @@ function MatchdaySection() {
                 </div>
               </div>
 
-              <div className="rounded-3xl border border-white/10 bg-white/[0.06] p-6">
+              <div className="overflow-x-auto rounded-3xl border border-white/10 bg-white/[0.06] p-5 sm:p-6">
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/40">
                   League Table
                 </p>
 
-                <div className="mt-5 grid grid-cols-[28px_1fr_34px_28px_28px_28px_42px_34px] gap-2 px-4 text-[10px] font-semibold uppercase tracking-[0.14em] text-white/35">
-                  <span>#</span>
-                  <span>Club</span>
-                  <span>Sp</span>
-                  <span>S</span>
-                  <span>U</span>
-                  <span>N</span>
-                  <span>TD</span>
-                  <span>Pkt</span>
-                </div>
+                <div className="mt-5 min-w-[560px]">
+                  <div className="grid grid-cols-[28px_1fr_34px_28px_28px_28px_42px_34px] gap-2 px-4 text-[10px] font-semibold uppercase tracking-[0.14em] text-white/35">
+                    <span>#</span>
+                    <span>Club</span>
+                    <span>Sp</span>
+                    <span>S</span>
+                    <span>U</span>
+                    <span>N</span>
+                    <span>TD</span>
+                    <span>Pkt</span>
+                  </div>
 
-                <div className="mt-3 space-y-3">
-                  {table.map(([rank, team, sp, s, u, n, td, pts]) => (
-                    <div
-                      key={team}
-                      className="grid grid-cols-[28px_1fr_34px_28px_28px_28px_42px_34px] items-center gap-2 rounded-2xl bg-black/25 px-4 py-3 text-sm"
-                    >
-                      <span className="text-white/35">#{rank}</span>
-                      <span className="font-semibold">{team}</span>
-                      <span className="text-white/45">{sp}</span>
-                      <span className="text-white/45">{s}</span>
-                      <span className="text-white/45">{u}</span>
-                      <span className="text-white/45">{n}</span>
-                      <span className="text-[#00D1B2]">{td}</span>
-                      <span className="font-semibold">{pts}</span>
-                    </div>
-                  ))}
+                  <div className="mt-3 space-y-3">
+                    {table.map(([rank, team, sp, s, u, n, td, pts]) => (
+                      <div
+                        key={team}
+                        className="grid grid-cols-[28px_1fr_34px_28px_28px_28px_42px_34px] items-center gap-2 rounded-2xl bg-black/25 px-4 py-3 text-sm"
+                      >
+                        <span className="text-white/35">#{rank}</span>
+                        <span className="font-semibold">{team}</span>
+                        <span className="text-white/45">{sp}</span>
+                        <span className="text-white/45">{s}</span>
+                        <span className="text-white/45">{u}</span>
+                        <span className="text-white/45">{n}</span>
+                        <span className="text-[#00D1B2]">{td}</span>
+                        <span className="font-semibold">{pts}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
@@ -395,7 +423,7 @@ function CTASection() {
           Change your player.
         </h2>
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/65">
-             verändert deinen Spieler, deine Skills und deine
+          Jede Bewegung verändert deinen Spieler, deine Skills und deine
           Identität.
         </p>
 
@@ -444,7 +472,7 @@ export default function PlayersPage() {
             <h1 className="text-6xl font-semibold leading-[0.92] tracking-tight text-black md:text-8xl xl:text-[7rem]">
               Build your
               <br />
-               player.
+              player.
             </h1>
 
             <p className="mt-8 max-w-2xl text-xl leading-relaxed text-black/75 md:text-2xl">
