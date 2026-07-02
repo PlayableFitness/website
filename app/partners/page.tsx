@@ -536,7 +536,7 @@ export default function PartnersPage() {
       <section className="relative overflow-hidden bg-[#f7f7f2]">
         <div className="absolute inset-0">
           <img
-            src="/header/header_16:9_04.png"
+            src="/header/header_04.png"
             alt="Partner Movement Impact"
             className="h-full w-full object-cover opacity-95"
             style={{ objectPosition: "center 48%" }}
