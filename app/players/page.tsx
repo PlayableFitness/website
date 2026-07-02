@@ -426,7 +426,7 @@ export default function PlayersPage() {
       <section className="relative overflow-hidden bg-[#f7f7f2]">
         <div className="absolute inset-0">
           <img
-            src="/header/header_16:9_05.png"
+            src="/header/header_05.png"
             alt="IY Player"
             className="h-full w-full object-cover opacity-95"
             style={{ objectPosition: "center 38%" }}
