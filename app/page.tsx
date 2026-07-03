@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-const playerCardPool = [
+const playerCardPool: string[] = [
   "/cards/PlayerCard01.png",
   "/cards/PlayerCard02.png",
   "/cards/PlayerCard03.png",
@@ -16,8 +16,10 @@ const playerCardPool = [
   "/cards/PlayerCard10.png",
 ];
 
-function getHeroCards(count = 4) {
-  return [...playerCardPool].sort(() => Math.random() - 0.5).slice(0, count);
+function getHeroCards(count: number = 4): string[] {
+  return [...playerCardPool]
+    .sort(() => Math.random() - 0.5)
+    .slice(0, count);
 }
 
 function Navbar() {
@@ -38,7 +40,7 @@ function Navbar() {
           </div>
         </Link>
 
-        <nav className="hidden items-center gap-8 text-xs font-semibold uppercase tracking-[0.12em] text-black/65 md:flex">
+        <nav className="flex items-center gap-8 text-xs font-semibold uppercase tracking-[0.12em] text-black/65">
           <Link href="/" className={`${activeClass} transition hover:text-black`}>
             Home
           </Link>
@@ -49,48 +51,24 @@ function Navbar() {
             Partner
           </Link>
         </nav>
-
-        <details className="relative md:hidden">
-          <summary className="list-none cursor-pointer rounded-xl border border-black/10 bg-white px-4 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-black">
-            Menu
-          </summary>
-
-          <div className="absolute right-0 mt-3 w-52 overflow-hidden rounded-2xl border border-black/10 bg-white shadow-xl shadow-black/10">
-            <Link href="/" className="block px-5 py-4 text-sm font-semibold text-[#00D1B2]">
-              Home
-            </Link>
-            <Link href="/players" className="block border-t border-black/10 px-5 py-4 text-sm font-semibold">
-              Player
-            </Link>
-            <Link href="/partners" className="block border-t border-black/10 px-5 py-4 text-sm font-semibold">
-              Partner
-            </Link>
-          </div>
-        </details>
       </div>
     </header>
   );
 }
 
-function HeroCards() {
-  const [cards, setCards] = useState([]);
+function DesktopHeroCards() {
+  const [cards, setCards] = useState<string[]>([]);
 
   useEffect(() => {
     setCards(getHeroCards(4));
   }, []);
 
-  const positions = [
+  const positions: string[] = [
     "left-0 top-20 z-10 w-[52%] -rotate-7 opacity-95",
     "left-[15%] top-10 z-20 w-[54%] -rotate-3 opacity-95",
     "right-[14%] top-12 z-30 w-[54%] rotate-3 opacity-95",
     "right-0 top-5 z-40 w-[56%] rotate-7 opacity-100",
   ];
-
-  if (!cards.length) {
-    return (
-      <div className="relative mx-auto hidden h-[560px] w-full max-w-[680px] md:block" />
-    );
-  }
 
   return (
     <div className="relative mx-auto hidden h-[560px] w-full max-w-[680px] md:block">
@@ -99,7 +77,9 @@ function HeroCards() {
           key={src}
           src={src}
           alt="IY Player Card"
-          className={`absolute rounded-[2rem] shadow-2xl shadow-black/20 transition duration-500 hover:z-50 hover:-translate-y-4 hover:scale-105 ${positions[index]}`}
+          className={`absolute rounded-[2rem] shadow-2xl shadow-black/20 transition duration-500 hover:z-50 hover:-translate-y-4 hover:scale-105 ${
+            positions[index] ?? ""
+          }`}
         />
       ))}
     </div>
@@ -107,30 +87,28 @@ function HeroCards() {
 }
 
 function MobileHeroCards() {
-  const [cards, setCards] = useState([]);
+  const [cards, setCards] = useState<string[]>([]);
 
   useEffect(() => {
     setCards(getHeroCards(3));
   }, []);
 
-  const positions = [
-    "left-4 top-12 z-10 w-[38%] -rotate-7 opacity-90",
-    "left-[31%] top-2 z-30 w-[40%] rotate-1 opacity-100",
-    "right-4 top-14 z-20 w-[38%] rotate-7 opacity-90",
+  const positions: string[] = [
+    "left-1 top-12 z-10 w-[40%] -rotate-7 opacity-90",
+    "left-[30%] top-2 z-30 w-[42%] rotate-1 opacity-100",
+    "right-1 top-14 z-20 w-[40%] rotate-7 opacity-90",
   ];
 
-  if (!cards.length) {
-    return <div className="mt-8 h-[205px] md:hidden" />;
-  }
-
   return (
-    <div className="relative mt-8 h-[205px] w-full md:hidden">
+    <div className="relative mx-auto mt-8 h-[210px] w-full max-w-md md:hidden">
       {cards.map((src, index) => (
         <img
           key={src}
           src={src}
           alt="IY Player Card"
-          className={`absolute rounded-[1.2rem] shadow-2xl shadow-black/15 ${positions[index]}`}
+          className={`absolute rounded-[1.2rem] shadow-2xl shadow-black/15 ${
+            positions[index] ?? ""
+          }`}
         />
       ))}
     </div>
@@ -170,7 +148,7 @@ function DesktopHero() {
           </p>
         </div>
 
-        <HeroCards />
+        <DesktopHeroCards />
       </div>
     </section>
   );
@@ -178,7 +156,7 @@ function DesktopHero() {
 
 function MobileHero() {
   return (
-    <section className="bg-[#FBFBF8] px-5 pb-8 pt-9 md:hidden">
+    <section className="bg-white px-5 pb-8 pt-9 md:hidden">
       <div className="mx-auto max-w-md">
         <div className="flex justify-center">
           <img
@@ -195,13 +173,13 @@ function MobileHero() {
         <h1 className="mt-5 text-center text-[4.05rem] font-semibold leading-[0.86] tracking-[-0.07em] text-black">
           Movement
           <br />
-          becomes
+          has
           <br />
-          identity.
+          value.
         </h1>
 
         <p className="mx-auto mt-7 max-w-[19rem] text-center text-lg leading-relaxed text-black/65">
-          Real sport creates recognition, belonging and measurable impact.
+          Real sport creates identity, recognition and measurable impact.
         </p>
 
         <MobileHeroCards />
@@ -235,7 +213,7 @@ function RoleSelection() {
               Build your player.
             </h3>
             <p className="mt-5 max-w-xl text-base leading-relaxed text-black/65 md:mt-6 md:text-lg">
-              Turn your real movement into visible progress, identity and status.
+              Turn real movement into visible progress, identity and status.
             </p>
             <div className="mt-7 inline-flex rounded-xl bg-[#00D1B2] px-5 py-4 text-xs font-semibold uppercase tracking-[0.14em] text-black md:mt-8 md:px-6">
               Explore Player →
@@ -284,10 +262,7 @@ function ManifestSection() {
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-[#FBFBF8] text-black">
-      <div className="hidden md:block">
-        <Navbar />
-      </div>
-
+      <Navbar />
       <DesktopHero />
       <MobileHero />
       <RoleSelection />
