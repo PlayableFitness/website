@@ -53,22 +53,13 @@ function Navbar() {
           </summary>
 
           <div className="absolute right-0 mt-3 w-52 overflow-hidden rounded-2xl border border-black/10 bg-white shadow-xl shadow-black/10">
-            <Link
-              href="/"
-              className="block px-5 py-4 text-sm font-semibold text-[#00D1B2]"
-            >
+            <Link href="/" className="block px-5 py-4 text-sm font-semibold text-[#00D1B2]">
               Home
             </Link>
-            <Link
-              href="/players"
-              className="block border-t border-black/10 px-5 py-4 text-sm font-semibold"
-            >
+            <Link href="/players" className="block border-t border-black/10 px-5 py-4 text-sm font-semibold">
               Player
             </Link>
-            <Link
-              href="/partners"
-              className="block border-t border-black/10 px-5 py-4 text-sm font-semibold"
-            >
+            <Link href="/partners" className="block border-t border-black/10 px-5 py-4 text-sm font-semibold">
               Partner
             </Link>
           </div>
@@ -105,7 +96,7 @@ function HeroCards() {
 function RoleSelection() {
   return (
     <section className="border-t border-black/10 bg-[#f7f7f2]">
-      <div className="mx-auto max-w-7xl px-6 py-16 md:py-24">
+      <div className="mx-auto max-w-7xl px-6 py-12 md:py-24">
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-black/45">
             Choose your role
@@ -115,10 +106,10 @@ function RoleSelection() {
           </h2>
         </div>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
+        <div className="mt-9 grid gap-5 md:mt-12 md:grid-cols-2 md:gap-6">
           <Link
             href="/players"
-            className="group rounded-[2rem] border border-black/10 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-black/10 md:p-10"
+            className="group rounded-[2rem] border border-black/10 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-black/10 md:p-10"
           >
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-black/40">
               Player
@@ -137,7 +128,7 @@ function RoleSelection() {
 
           <Link
             href="/partners"
-            className="group rounded-[2rem] border border-black/10 bg-black p-8 text-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-black/10 md:p-10"
+            className="group rounded-[2rem] border border-black/10 bg-black p-7 text-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-black/10 md:p-10"
           >
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/40">
               Partner
@@ -161,8 +152,8 @@ function RoleSelection() {
 
 function ManifestSection() {
   return (
-    <section className="border-t border-black/10 bg-[#f7f7f2] px-6 py-20 md:py-32">
-      <div className="mx-auto max-w-7xl rounded-[2rem] border border-black/10 bg-white p-8 text-center shadow-sm md:p-16">
+    <section className="border-t border-black/10 bg-[#f7f7f2] px-6 py-14 md:py-32">
+      <div className="mx-auto max-w-7xl rounded-[2rem] border border-black/10 bg-white p-7 shadow-sm md:p-16 md:text-center">
         <h2 className="text-5xl font-semibold leading-[0.98] tracking-tight text-black md:text-8xl">
           Create movement.
           <br />
@@ -185,26 +176,26 @@ export default function HomePage() {
           <img
             src="/header/header_16:9_03.png"
             alt="IY Movement"
-            className="h-full w-full object-cover opacity-95"
+            className="h-full w-full object-cover opacity-95 object-[70%_center] md:object-center"
             style={{ objectPosition: "center 35%" }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#f7f7f2]/95 via-[#f7f7f2]/72 to-transparent" />
-          <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#f7f7f2] to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#f7f7f2]/96 via-[#f7f7f2]/78 to-[#f7f7f2]/30 md:from-[#f7f7f2]/95 md:via-[#f7f7f2]/72 md:to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#f7f7f2] to-transparent md:h-40" />
         </div>
 
-        <div className="relative mx-auto grid min-h-[82vh] max-w-7xl items-center gap-12 px-6 py-20 md:grid-cols-[0.9fr_1.1fr]">
+        <div className="relative mx-auto grid min-h-[58vh] max-w-7xl items-center gap-8 px-6 py-14 md:min-h-[82vh] md:grid-cols-[0.9fr_1.1fr] md:gap-12 md:py-20">
           <div className="max-w-3xl">
-            <p className="mb-6 text-xs font-semibold uppercase tracking-[0.22em] text-black/55">
+            <p className="mb-5 text-xs font-semibold uppercase tracking-[0.22em] text-black/55 md:mb-6">
               Improve Yourself
             </p>
 
-            <h1 className="text-6xl font-semibold leading-[0.92] tracking-tight text-black md:text-8xl xl:text-[7rem]">
+            <h1 className="text-5xl font-semibold leading-[0.94] tracking-tight text-black sm:text-6xl md:text-8xl md:leading-[0.92] xl:text-[7rem]">
               You are
               <br />
               the player.
             </h1>
 
-            <p className="mt-8 max-w-2xl text-xl leading-relaxed text-black/75 md:text-2xl">
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-black/75 md:mt-8 md:text-2xl">
               Real movement shapes your identity.
             </p>
           </div>
