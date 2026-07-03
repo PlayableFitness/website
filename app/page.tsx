@@ -136,7 +136,7 @@ function DesktopHero() {
           </p>
 
           <h1 className="text-8xl font-semibold leading-[0.92] tracking-tight text-black xl:text-[7rem]">
-            Movement
+            Sport
             <br />
             becomes
             <br />
