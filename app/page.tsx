@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
 
 const playerCardPool = [
@@ -13,8 +16,8 @@ const playerCardPool = [
   "/cards/PlayerCard10.png",
 ];
 
-function getHeroCards() {
-  return [...playerCardPool].sort(() => Math.random() - 0.5).slice(0, 4);
+function getHeroCards(count = 4) {
+  return [...playerCardPool].sort(() => Math.random() - 0.5).slice(0, count);
 }
 
 function Navbar() {
@@ -70,7 +73,11 @@ function Navbar() {
 }
 
 function HeroCards() {
-  const cards = getHeroCards();
+  const [cards, setCards] = useState([]);
+
+  useEffect(() => {
+    setCards(getHeroCards(4));
+  }, []);
 
   const positions = [
     "left-0 top-20 z-10 w-[52%] -rotate-7 opacity-95",
@@ -78,6 +85,12 @@ function HeroCards() {
     "right-[14%] top-12 z-30 w-[54%] rotate-3 opacity-95",
     "right-0 top-5 z-40 w-[56%] rotate-7 opacity-100",
   ];
+
+  if (!cards.length) {
+    return (
+      <div className="relative mx-auto hidden h-[560px] w-full max-w-[680px] md:block" />
+    );
+  }
 
   return (
     <div className="relative mx-auto hidden h-[560px] w-full max-w-[680px] md:block">
@@ -94,22 +107,30 @@ function HeroCards() {
 }
 
 function MobileHeroCards() {
-  const cards = getHeroCards().slice(0, 3);
+  const [cards, setCards] = useState([]);
+
+  useEffect(() => {
+    setCards(getHeroCards(3));
+  }, []);
 
   const positions = [
-    "left-2 top-8 z-10 w-[42%] -rotate-8 opacity-90",
-    "left-[29%] top-0 z-30 w-[44%] rotate-1 opacity-100",
-    "right-2 top-10 z-20 w-[42%] rotate-8 opacity-90",
+    "left-4 top-12 z-10 w-[38%] -rotate-7 opacity-90",
+    "left-[31%] top-2 z-30 w-[40%] rotate-1 opacity-100",
+    "right-4 top-14 z-20 w-[38%] rotate-7 opacity-90",
   ];
 
+  if (!cards.length) {
+    return <div className="mt-8 h-[205px] md:hidden" />;
+  }
+
   return (
-    <div className="relative mt-10 h-[230px] w-full md:hidden">
+    <div className="relative mt-8 h-[205px] w-full md:hidden">
       {cards.map((src, index) => (
         <img
           key={src}
           src={src}
           alt="IY Player Card"
-          className={`absolute rounded-[1.35rem] shadow-2xl shadow-black/20 ${positions[index]}`}
+          className={`absolute rounded-[1.2rem] shadow-2xl shadow-black/15 ${positions[index]}`}
         />
       ))}
     </div>
@@ -118,7 +139,7 @@ function MobileHeroCards() {
 
 function DesktopHero() {
   return (
-    <section className="relative hidden overflow-hidden bg-[#f7f7f2] md:block">
+    <section className="relative hidden overflow-hidden bg-[#FBFBF8] md:block">
       <div className="absolute inset-0">
         <img
           src="/header/header_16:9_03.png"
@@ -126,8 +147,8 @@ function DesktopHero() {
           className="h-full w-full object-cover opacity-95"
           style={{ objectPosition: "center 35%" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#f7f7f2]/95 via-[#f7f7f2]/72 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#f7f7f2] to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#FBFBF8]/95 via-[#FBFBF8]/72 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#FBFBF8] to-transparent" />
       </div>
 
       <div className="relative mx-auto grid min-h-[82vh] max-w-7xl grid-cols-[0.9fr_1.1fr] items-center gap-12 px-6 py-20">
@@ -157,7 +178,7 @@ function DesktopHero() {
 
 function MobileHero() {
   return (
-    <section className="bg-[#f7f7f2] px-5 pb-10 pt-10 md:hidden">
+    <section className="bg-[#FBFBF8] px-5 pb-8 pt-9 md:hidden">
       <div className="mx-auto max-w-md">
         <div className="flex justify-center">
           <img
@@ -167,11 +188,11 @@ function MobileHero() {
           />
         </div>
 
-        <p className="mt-7 text-center text-xs font-semibold uppercase tracking-[0.28em] text-black/45">
+        <p className="mt-7 text-center text-xs font-semibold uppercase tracking-[0.28em] text-black/40">
           Improve Yourself
         </p>
 
-        <h1 className="mt-5 text-center text-[4.15rem] font-semibold leading-[0.86] tracking-[-0.065em] text-black">
+        <h1 className="mt-5 text-center text-[4.05rem] font-semibold leading-[0.86] tracking-[-0.07em] text-black">
           Movement
           <br />
           becomes
@@ -191,7 +212,7 @@ function MobileHero() {
 
 function RoleSelection() {
   return (
-    <section className="border-t border-black/10 bg-[#f7f7f2]">
+    <section className="border-t border-black/10 bg-[#FBFBF8]">
       <div className="mx-auto max-w-7xl px-5 py-12 md:px-6 md:py-24">
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-black/45">
@@ -246,7 +267,7 @@ function RoleSelection() {
 
 function ManifestSection() {
   return (
-    <section className="border-t border-black/10 bg-[#f7f7f2] px-5 py-10 md:px-6 md:py-32">
+    <section className="border-t border-black/10 bg-[#FBFBF8] px-5 py-10 md:px-6 md:py-32">
       <div className="mx-auto max-w-7xl rounded-[1.75rem] border border-black/10 bg-white p-6 shadow-sm md:rounded-[2rem] md:p-16 md:text-center">
         <h2 className="text-[3.05rem] font-semibold leading-[0.92] tracking-tight text-black md:text-8xl md:leading-[0.98]">
           Create movement.
@@ -262,8 +283,11 @@ function ManifestSection() {
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-[#f7f7f2] text-black">
-      <Navbar />
+    <main className="min-h-screen bg-[#FBFBF8] text-black">
+      <div className="hidden md:block">
+        <Navbar />
+      </div>
+
       <DesktopHero />
       <MobileHero />
       <RoleSelection />
