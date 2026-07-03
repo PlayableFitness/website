@@ -171,11 +171,11 @@ function MobileHero() {
         </p>
 
         <h1 className="mt-5 text-center text-[4.05rem] font-semibold leading-[0.86] tracking-[-0.07em] text-black">
-          Movement
+          Sport
           <br />
-          has
+          becomes
           <br />
-          value.
+          identity.
         </h1>
 
         <p className="mx-auto mt-7 max-w-[19rem] text-center text-lg leading-relaxed text-black/65">
