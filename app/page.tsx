@@ -93,23 +93,119 @@ function HeroCards() {
   );
 }
 
+function MobileHeroCards() {
+  const cards = getHeroCards().slice(0, 3);
+
+  const positions = [
+    "left-2 top-8 z-10 w-[42%] -rotate-8 opacity-90",
+    "left-[29%] top-0 z-30 w-[44%] rotate-1 opacity-100",
+    "right-2 top-10 z-20 w-[42%] rotate-8 opacity-90",
+  ];
+
+  return (
+    <div className="relative mt-10 h-[230px] w-full md:hidden">
+      {cards.map((src, index) => (
+        <img
+          key={src}
+          src={src}
+          alt="IY Player Card"
+          className={`absolute rounded-[1.35rem] shadow-2xl shadow-black/20 ${positions[index]}`}
+        />
+      ))}
+    </div>
+  );
+}
+
+function DesktopHero() {
+  return (
+    <section className="relative hidden overflow-hidden bg-[#f7f7f2] md:block">
+      <div className="absolute inset-0">
+        <img
+          src="/header/header_16:9_03.png"
+          alt="IY Movement"
+          className="h-full w-full object-cover opacity-95"
+          style={{ objectPosition: "center 35%" }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#f7f7f2]/95 via-[#f7f7f2]/72 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#f7f7f2] to-transparent" />
+      </div>
+
+      <div className="relative mx-auto grid min-h-[82vh] max-w-7xl grid-cols-[0.9fr_1.1fr] items-center gap-12 px-6 py-20">
+        <div className="max-w-3xl">
+          <p className="mb-6 text-xs font-semibold uppercase tracking-[0.22em] text-black/55">
+            Improve Yourself
+          </p>
+
+          <h1 className="text-8xl font-semibold leading-[0.92] tracking-tight text-black xl:text-[7rem]">
+            Movement
+            <br />
+            becomes
+            <br />
+            identity.
+          </h1>
+
+          <p className="mt-8 max-w-2xl text-2xl leading-relaxed text-black/75">
+            IY connects real sport with recognition, belonging and measurable impact.
+          </p>
+        </div>
+
+        <HeroCards />
+      </div>
+    </section>
+  );
+}
+
+function MobileHero() {
+  return (
+    <section className="bg-[#f7f7f2] px-5 pb-10 pt-10 md:hidden">
+      <div className="mx-auto max-w-md">
+        <div className="flex justify-center">
+          <img
+            src="/logo/IY Logo.png"
+            alt="IY Logo"
+            className="h-14 w-14 rounded-2xl object-cover shadow-lg shadow-black/10"
+          />
+        </div>
+
+        <p className="mt-7 text-center text-xs font-semibold uppercase tracking-[0.28em] text-black/45">
+          Improve Yourself
+        </p>
+
+        <h1 className="mt-5 text-center text-[4.15rem] font-semibold leading-[0.86] tracking-[-0.065em] text-black">
+          Movement
+          <br />
+          becomes
+          <br />
+          identity.
+        </h1>
+
+        <p className="mx-auto mt-7 max-w-[19rem] text-center text-lg leading-relaxed text-black/65">
+          Real sport creates recognition, belonging and measurable impact.
+        </p>
+
+        <MobileHeroCards />
+      </div>
+    </section>
+  );
+}
+
 function RoleSelection() {
   return (
     <section className="border-t border-black/10 bg-[#f7f7f2]">
-      <div className="mx-auto max-w-7xl px-6 py-12 md:py-24">
+      <div className="mx-auto max-w-7xl px-5 py-12 md:px-6 md:py-24">
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-black/45">
             Choose your role
           </p>
           <h2 className="mt-4 text-4xl font-semibold leading-[1.02] tracking-tight text-black md:text-6xl">
-            Where do you belong?
+            Enter the world of IY.
           </h2>
         </div>
 
-        <div className="mt-9 grid gap-5 md:mt-12 md:grid-cols-2 md:gap-6">
+        <div className="mt-8 grid gap-4 md:mt-12 md:grid-cols-2 md:gap-6">
           <Link
             href="/players"
-            className="group rounded-[2rem] border border-black/10 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-black/10 md:p-10"
+            className="group rounded-[1.75rem] border border-black/10 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-black/10 md:rounded-[2rem] md:p-10"
           >
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-black/40">
               Player
@@ -117,30 +213,28 @@ function RoleSelection() {
             <h3 className="mt-4 text-4xl font-semibold leading-[1.02] tracking-tight text-black md:text-6xl">
               Build your player.
             </h3>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-black/65">
-              Entwickle deinen Spieler durch echte Bewegung. Deine Aktivität
-              wird sichtbar als Card, Skills, Team und Status.
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-black/65 md:mt-6 md:text-lg">
+              Turn your real movement into visible progress, identity and status.
             </p>
-            <div className="mt-8 inline-flex rounded-xl bg-[#00D1B2] px-6 py-4 text-xs font-semibold uppercase tracking-[0.14em] text-black">
+            <div className="mt-7 inline-flex rounded-xl bg-[#00D1B2] px-5 py-4 text-xs font-semibold uppercase tracking-[0.14em] text-black md:mt-8 md:px-6">
               Explore Player →
             </div>
           </Link>
 
           <Link
             href="/partners"
-            className="group rounded-[2rem] border border-black/10 bg-black p-7 text-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-black/10 md:p-10"
+            className="group rounded-[1.75rem] border border-black/10 bg-black p-6 text-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-black/10 md:rounded-[2rem] md:p-10"
           >
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/40">
               Partner
             </p>
             <h3 className="mt-4 text-4xl font-semibold leading-[1.02] tracking-tight md:text-6xl">
-              Create movement.
+              Move people.
             </h3>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/65">
-              Inspiriere Menschen zu echter Bewegung, werde Teil ihrer Identität
-              und mache positiven Impact messbar.
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-white/65 md:mt-6 md:text-lg">
+              Become part of real activity, player identity and measurable impact.
             </p>
-            <div className="mt-8 inline-flex rounded-xl bg-[#00D1B2] px-6 py-4 text-xs font-semibold uppercase tracking-[0.14em] text-black">
+            <div className="mt-7 inline-flex rounded-xl bg-[#00D1B2] px-5 py-4 text-xs font-semibold uppercase tracking-[0.14em] text-black md:mt-8 md:px-6">
               Explore Partner →
             </div>
           </Link>
@@ -152,9 +246,9 @@ function RoleSelection() {
 
 function ManifestSection() {
   return (
-    <section className="border-t border-black/10 bg-[#f7f7f2] px-6 py-14 md:py-32">
-      <div className="mx-auto max-w-7xl rounded-[2rem] border border-black/10 bg-white p-7 shadow-sm md:p-16 md:text-center">
-        <h2 className="text-5xl font-semibold leading-[0.98] tracking-tight text-black md:text-8xl">
+    <section className="border-t border-black/10 bg-[#f7f7f2] px-5 py-10 md:px-6 md:py-32">
+      <div className="mx-auto max-w-7xl rounded-[1.75rem] border border-black/10 bg-white p-6 shadow-sm md:rounded-[2rem] md:p-16 md:text-center">
+        <h2 className="text-[3.05rem] font-semibold leading-[0.92] tracking-tight text-black md:text-8xl md:leading-[0.98]">
           Create movement.
           <br />
           Build identity.
@@ -170,40 +264,8 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-[#f7f7f2] text-black">
       <Navbar />
-
-      <section className="relative overflow-hidden bg-[#f7f7f2]">
-        <div className="absolute inset-0">
-          <img
-            src="/header/header_16:9_03.png"
-            alt="IY Movement"
-            className="h-full w-full object-cover opacity-95 object-[70%_center] md:object-center"
-            style={{ objectPosition: "center 35%" }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#f7f7f2]/96 via-[#f7f7f2]/78 to-[#f7f7f2]/30 md:from-[#f7f7f2]/95 md:via-[#f7f7f2]/72 md:to-transparent" />
-          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#f7f7f2] to-transparent md:h-40" />
-        </div>
-
-        <div className="relative mx-auto grid min-h-[58vh] max-w-7xl items-center gap-8 px-6 py-14 md:min-h-[82vh] md:grid-cols-[0.9fr_1.1fr] md:gap-12 md:py-20">
-          <div className="max-w-3xl">
-            <p className="mb-5 text-xs font-semibold uppercase tracking-[0.22em] text-black/55 md:mb-6">
-              Improve Yourself
-            </p>
-
-            <h1 className="text-5xl font-semibold leading-[0.94] tracking-tight text-black sm:text-6xl md:text-8xl md:leading-[0.92] xl:text-[7rem]">
-              You are
-              <br />
-              the player.
-            </h1>
-
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-black/75 md:mt-8 md:text-2xl">
-              Real movement shapes your identity.
-            </p>
-          </div>
-
-          <HeroCards />
-        </div>
-      </section>
-
+      <DesktopHero />
+      <MobileHero />
       <RoleSelection />
       <ManifestSection />
     </main>
