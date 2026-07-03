@@ -25,7 +25,7 @@ function Navbar() {
     "text-black underline decoration-[#00D1B2] decoration-2 underline-offset-8";
 
   return (
-    <header className="sticky top-0 z-50 border-b border-black/10 bg-white">
+    <header className="sticky top-0 z-50 hidden border-b border-black/10 bg-white md:block">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Link href="/" className="flex items-center gap-3">
           <img
