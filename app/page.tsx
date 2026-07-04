@@ -20,25 +20,22 @@ const journeyCards = [
   {
     level: "Starter",
     ovr: "45",
-    image: "/cards/Card_Starter.png",
+    image: "/cards/Card_Rookie.png",
     text: "Every player starts somewhere.",
   },
   {
     level: "Rookie",
-    ovr: "60",
-    image: "/cards/Card_Rookie.png",
+    image: "/cards/Card_Starter.png",
     text: "Every workout moves you forward.",
   },
   {
     level: "Pro",
-    ovr: "75",
-    image: "/cards/Card_Pro.png",
+    image: "/cards/Card_Elite.png",
     text: "Consistency becomes visible.",
   },
   {
     level: "Elite",
-    ovr: "90",
-    image: "/cards/Card_Elite.png",
+    image: "/cards/Card_Pro.png",
     text: "Progress is earned.",
   },
 ];
