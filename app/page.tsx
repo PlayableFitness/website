@@ -19,7 +19,6 @@ const playerCardPool: string[] = [
 const journeyCards = [
   {
     level: "Starter",
-    ovr: "45",
     image: "/cards/Card_Rookie.png",
     text: "Every player starts somewhere.",
   },
@@ -298,7 +297,6 @@ function PlayerJourneySection() {
                     {card.level}
                   </p>
                   <p className="mt-1 text-4xl font-semibold leading-none tracking-tight text-black">
-                    {card.ovr} OVR
                   </p>
                 </div>
                 <span className="rounded-full bg-black px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-white">
