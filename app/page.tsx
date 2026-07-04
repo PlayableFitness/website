@@ -16,6 +16,33 @@ const playerCardPool: string[] = [
   "/cards/PlayerCard10.png",
 ];
 
+const journeyCards = [
+  {
+    level: "Starter",
+    ovr: "45",
+    image: "/cards/Card_Starter.png",
+    text: "Every player starts somewhere.",
+  },
+  {
+    level: "Rookie",
+    ovr: "60",
+    image: "/cards/Card_Rookie.png",
+    text: "Every workout moves you forward.",
+  },
+  {
+    level: "Pro",
+    ovr: "75",
+    image: "/cards/Card_Pro.png",
+    text: "Consistency becomes visible.",
+  },
+  {
+    level: "Elite",
+    ovr: "90",
+    image: "/cards/Card_Elite.png",
+    text: "Progress is earned.",
+  },
+];
+
 function getHeroCards(count: number = 4): string[] {
   return [...playerCardPool]
     .sort(() => Math.random() - 0.5)
@@ -194,7 +221,7 @@ function RoleSelection() {
       <div className="mx-auto max-w-7xl px-5 py-12 md:px-6 md:py-24">
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-black/45">
-            CHOOSE YOUR ROLE
+            How do you want to be part of it?
           </p>
           <h2 className="mt-4 text-4xl font-semibold leading-[1.02] tracking-tight text-black md:text-6xl">
             Where do you belong?
@@ -210,10 +237,10 @@ function RoleSelection() {
               Player
             </p>
             <h3 className="mt-4 text-4xl font-semibold leading-[1.02] tracking-tight text-black md:text-6xl">
-              Your sport becomes your progress.
+              Turn your sport into progress.
             </h3>
             <p className="mt-5 max-w-xl text-base leading-relaxed text-black/65 md:mt-6 md:text-lg">
-              Every real workout builds your player, unlocks new opportunities and makes your progress visible.
+              Real movement builds your player, your identity and your future.
             </p>
             <div className="mt-7 inline-flex rounded-xl bg-[#00D1B2] px-5 py-4 text-xs font-semibold uppercase tracking-[0.14em] text-black md:mt-8 md:px-6">
               Player →
@@ -228,7 +255,7 @@ function RoleSelection() {
               Partner
             </p>
             <h3 className="mt-4 text-4xl font-semibold leading-[1.02] tracking-tight md:text-6xl">
-              Become part of players progress.
+              Become part of players&apos; progress.
             </h3>
             <p className="mt-5 max-w-xl text-base leading-relaxed text-white/65 md:mt-6 md:text-lg">
               Every partnership inspires real movement, builds authentic connections and creates measurable impact.
@@ -243,17 +270,59 @@ function RoleSelection() {
   );
 }
 
-function ManifestSection() {
+function PlayerJourneySection() {
   return (
-    <section className="border-t border-black/10 bg-[#FBFBF8] px-5 py-10 md:px-6 md:py-32">
-      <div className="mx-auto max-w-7xl rounded-[1.75rem] border border-black/10 bg-white p-6 shadow-sm md:rounded-[2rem] md:p-16 md:text-center">
-        <h2 className="text-[3.05rem] font-semibold leading-[0.92] tracking-tight text-black md:text-8xl md:leading-[0.98]">
-          Create movement.
-          <br />
-          Build identity.
-          <br />
-          Measure impact.
-        </h2>
+    <section className="border-t border-black/10 bg-white px-5 py-14 md:bg-[#FBFBF8] md:px-6 md:py-28">
+      <div className="mx-auto max-w-7xl">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-black/45">
+            Player journey
+          </p>
+          <h2 className="mt-4 text-5xl font-semibold leading-[0.95] tracking-tight text-black md:text-7xl">
+            Every player
+            <br />
+            starts somewhere.
+          </h2>
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-black/60 md:text-xl">
+            Real activity shapes your player, unlocks new levels and turns progress into identity.
+          </p>
+        </div>
+
+        <div className="mt-12 grid gap-6 md:mt-16 md:grid-cols-4">
+          {journeyCards.map((card, index) => (
+            <div
+              key={card.level}
+              className="group sticky top-8 rounded-[2rem] border border-black/10 bg-[#FBFBF8] p-4 shadow-xl shadow-black/10 md:static md:p-4"
+              style={{ zIndex: index + 1 }}
+            >
+              <div className="flex items-center justify-between px-2 pb-4">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-black/40">
+                    {card.level}
+                  </p>
+                  <p className="mt-1 text-4xl font-semibold leading-none tracking-tight text-black">
+                    {card.ovr} OVR
+                  </p>
+                </div>
+                <span className="rounded-full bg-black px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-white">
+                  0{index + 1}
+                </span>
+              </div>
+
+              <div className="overflow-hidden rounded-[1.6rem] bg-white">
+                <img
+                  src={card.image}
+                  alt={`${card.level} Player Card`}
+                  className="w-full transition duration-700 group-hover:scale-[1.03]"
+                />
+              </div>
+
+              <p className="px-2 pt-5 text-2xl font-semibold leading-tight tracking-tight text-black">
+                {card.text}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -266,7 +335,7 @@ export default function HomePage() {
       <DesktopHero />
       <MobileHero />
       <RoleSelection />
-      <ManifestSection />
+      <PlayerJourneySection />
     </main>
   );
 }
