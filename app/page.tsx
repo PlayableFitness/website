@@ -136,9 +136,9 @@ function DesktopHero() {
           </p>
 
           <h1 className="text-8xl font-semibold leading-[0.92] tracking-tight text-black xl:text-[7rem]">
-            Sport
+            Movement
             <br />
-            becomes
+            creates
             <br />
             identity.
           </h1>
@@ -179,7 +179,7 @@ function MobileHero() {
         </h1>
 
         <p className="mx-auto mt-7 max-w-[19rem] text-center text-lg leading-relaxed text-black/65">
-          Real sport creates identity, recognition and measurable impact.
+          Where real movement becomes progress, recognition and impact.
         </p>
 
         <MobileHeroCards />
