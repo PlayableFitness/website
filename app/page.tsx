@@ -194,7 +194,7 @@ function RoleSelection() {
       <div className="mx-auto max-w-7xl px-5 py-12 md:px-6 md:py-24">
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-black/45">
-            Choose your role
+            How do you want to be part of it?
           </p>
           <h2 className="mt-4 text-4xl font-semibold leading-[1.02] tracking-tight text-black md:text-6xl">
             Enter the world of IY.
@@ -210,13 +210,13 @@ function RoleSelection() {
               Player
             </p>
             <h3 className="mt-4 text-4xl font-semibold leading-[1.02] tracking-tight text-black md:text-6xl">
-              Build your player.
+              Turn your sport into progress.
             </h3>
             <p className="mt-5 max-w-xl text-base leading-relaxed text-black/65 md:mt-6 md:text-lg">
-              Turn real movement into visible progress, identity and status.
+              Real movement builds your player, your identity and your future.
             </p>
             <div className="mt-7 inline-flex rounded-xl bg-[#00D1B2] px-5 py-4 text-xs font-semibold uppercase tracking-[0.14em] text-black md:mt-8 md:px-6">
-              Explore Player →
+              Player →
             </div>
           </Link>
 
@@ -228,13 +228,13 @@ function RoleSelection() {
               Partner
             </p>
             <h3 className="mt-4 text-4xl font-semibold leading-[1.02] tracking-tight md:text-6xl">
-              Move people.
+              Become part of the game.
             </h3>
             <p className="mt-5 max-w-xl text-base leading-relaxed text-white/65 md:mt-6 md:text-lg">
-              Become part of real activity, player identity and measurable impact.
+              Inspire real movement and measure the impact you create.
             </p>
             <div className="mt-7 inline-flex rounded-xl bg-[#00D1B2] px-5 py-4 text-xs font-semibold uppercase tracking-[0.14em] text-black md:mt-8 md:px-6">
-              Explore Partner →
+              Partner →
             </div>
           </Link>
         </div>
