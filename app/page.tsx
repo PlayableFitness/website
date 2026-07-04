@@ -194,10 +194,10 @@ function RoleSelection() {
       <div className="mx-auto max-w-7xl px-5 py-12 md:px-6 md:py-24">
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-black/45">
-            How do you want to be part of it?
+            CHOOSE YOUR ROLE
           </p>
           <h2 className="mt-4 text-4xl font-semibold leading-[1.02] tracking-tight text-black md:text-6xl">
-            Enter the world of IY.
+            Where do you belong?
           </h2>
         </div>
 
@@ -210,10 +210,10 @@ function RoleSelection() {
               Player
             </p>
             <h3 className="mt-4 text-4xl font-semibold leading-[1.02] tracking-tight text-black md:text-6xl">
-              Turn your sport into progress.
+              Your sport becomes your progress.
             </h3>
             <p className="mt-5 max-w-xl text-base leading-relaxed text-black/65 md:mt-6 md:text-lg">
-              Real movement builds your player, your identity and your future.
+              Every real workout builds your player, unlocks new opportunities and makes your progress visible.
             </p>
             <div className="mt-7 inline-flex rounded-xl bg-[#00D1B2] px-5 py-4 text-xs font-semibold uppercase tracking-[0.14em] text-black md:mt-8 md:px-6">
               Player →
@@ -228,10 +228,10 @@ function RoleSelection() {
               Partner
             </p>
             <h3 className="mt-4 text-4xl font-semibold leading-[1.02] tracking-tight md:text-6xl">
-              Become part of the game.
+              Become part of players progress.
             </h3>
             <p className="mt-5 max-w-xl text-base leading-relaxed text-white/65 md:mt-6 md:text-lg">
-              Inspire real movement and measure the impact you create.
+              Every partnership inspires real movement, builds authentic connections and creates measurable impact.
             </p>
             <div className="mt-7 inline-flex rounded-xl bg-[#00D1B2] px-5 py-4 text-xs font-semibold uppercase tracking-[0.14em] text-black md:mt-8 md:px-6">
               Partner →
