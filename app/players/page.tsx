@@ -178,14 +178,13 @@ function PlayerHero() {
             Every real workout changes your player, your skills and your identity.
           </p>
 
-          <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+          <div className="mt-8 flex">
             <Link
-              href="mailto:hello@playable-fitness.com?subject=IY%20Early%20Access"
-              className="inline-flex items-center justify-center rounded-xl bg-[#00D1B2] px-7 py-4 text-xs font-semibold uppercase tracking-[0.14em] text-black transition hover:scale-[1.02]"
+              href="mailto:hello@playable-fitness.com?subject=IY%20Early%20Access&body=Hi%20IY%2C%0A%0AI%20want%20early%20access%20and%20would%20like%20to%20stay%20updated.%0A%0AName%3A%0ASport%3A%0ACountry%3A"
+              className="inline-flex w-full items-center justify-center rounded-xl bg-[#00D1B2] px-7 py-4 text-xs font-semibold uppercase tracking-[0.14em] text-black transition hover:scale-[1.02] sm:w-auto"
             >
               Get early access →
             </Link>
-
           </div>
         </div>
 
