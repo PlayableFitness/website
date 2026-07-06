@@ -153,9 +153,16 @@ function PlayerHero() {
     <section className="relative overflow-hidden bg-black text-white">
       <div className="absolute inset-0">
         <img
+          src="/header/player_mobile.png"
+          alt="IY Player"
+          className="h-full w-full object-cover opacity-60 md:hidden"
+          style={{ objectPosition: "center center" }}
+        />
+        
+        <img
           src="/header/header_05.png"
           alt="IY Player"
-          className="h-full w-full object-cover opacity-60"
+          className="hidden h-full w-full object-cover opacity-60 md:block"
           style={{ objectPosition: "center 38%" }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-black/20" />
