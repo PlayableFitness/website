@@ -162,7 +162,7 @@ function PlayerHero() {
         <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-black to-transparent" />
       </div>
 
-      <div className="relative mx-auto grid min-h-[86vh] max-w-7xl items-center gap-12 px-6 py-20 md:grid-cols-[0.9fr_1.1fr]">
+      <div className="relative mx-auto grid min-h-[78vh] max-w-7xl items-center gap-12 px-6 pb-16 pt-24 md:min-h-[86vh] md:grid-cols-[0.9fr_1.1fr] md:py-20">
         <div className="max-w-3xl">
           <p className="mb-6 text-xs font-semibold uppercase tracking-[0.22em] text-white/45">
             Player
