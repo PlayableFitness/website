@@ -186,12 +186,6 @@ function PlayerHero() {
               Get early access →
             </Link>
 
-            <Link
-              href="/partners"
-              className="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/10 px-6 py-4 text-xs font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-white/15"
-            >
-              Explore Partner →
-            </Link>
           </div>
         </div>
 
