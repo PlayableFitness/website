@@ -151,44 +151,48 @@ function HeroCards() {
 function PlayerHero() {
   return (
     <section className="relative overflow-hidden bg-black text-white">
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 md:hidden">
         <img
           src="/header/player_mobile.png"
           alt="IY Player"
-          className="h-full w-full object-cover opacity-60 md:hidden"
-          style={{ objectPosition: "center center" }}
+          className="h-full w-full object-cover opacity-90"
+          style={{ objectPosition: "58% center" }}
         />
-        
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/35 to-black" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/35 to-transparent" />
+      </div>
+
+      <div className="absolute inset-0 hidden md:block">
         <img
           src="/header/header_05.png"
           alt="IY Player"
-          className="hidden h-full w-full object-cover opacity-60 md:block"
+          className="h-full w-full object-cover opacity-60"
           style={{ objectPosition: "center 38%" }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-black/20" />
         <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-black to-transparent" />
       </div>
 
-      <div className="relative mx-auto grid min-h-[78vh] max-w-7xl items-center gap-12 px-6 pb-16 pt-24 md:min-h-[86vh] md:grid-cols-[0.9fr_1.1fr] md:py-20">
+      <div className="relative mx-auto grid min-h-[calc(100vh-76px)] max-w-7xl items-end gap-12 px-6 pb-12 pt-28 md:min-h-[86vh] md:grid-cols-[0.9fr_1.1fr] md:items-center md:py-20">
         <div className="max-w-3xl">
-          <p className="mb-6 text-xs font-semibold uppercase tracking-[0.22em] text-white/45">
+          <p className="mb-6 text-xs font-semibold uppercase tracking-[0.22em] text-white/55">
             Player
           </p>
 
-          <h1 className="text-6xl font-semibold leading-[0.9] tracking-tight md:text-8xl xl:text-[7rem]">
+          <h1 className="text-[4.15rem] font-semibold leading-[0.86] tracking-[-0.06em] md:text-8xl md:leading-[0.9] md:tracking-tight xl:text-[7rem]">
             You are
             <br />
             the player.
           </h1>
 
-          <p className="mt-8 max-w-2xl text-xl leading-relaxed text-white/70 md:text-2xl">
+          <p className="mt-7 max-w-[21rem] text-xl leading-relaxed text-white/75 md:mt-8 md:max-w-2xl md:text-2xl">
             Every real workout changes your player, your skills and your identity.
           </p>
 
           <div className="mt-8 flex">
             <Link
               href="mailto:hello@playable-fitness.com?subject=IY%20Early%20Access&body=Hi%20IY%2C%0A%0AI%20want%20early%20access%20and%20would%20like%20to%20stay%20updated.%0A%0AName%3A%0ASport%3A%0ACountry%3A"
-              className="inline-flex w-full items-center justify-center rounded-xl bg-[#00D1B2] px-7 py-4 text-xs font-semibold uppercase tracking-[0.14em] text-black transition hover:scale-[1.02] sm:w-auto"
+              className="inline-flex w-full items-center justify-center rounded-xl bg-[#00D1B2] px-7 py-5 text-xs font-semibold uppercase tracking-[0.16em] text-black shadow-2xl shadow-[#00D1B2]/20 transition hover:scale-[1.02] sm:w-auto md:py-4"
             >
               Get early access →
             </Link>
